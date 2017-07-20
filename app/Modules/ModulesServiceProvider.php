@@ -41,7 +41,7 @@ class ModulesServiceProvider extends \Illuminate\Support\ServiceProvider
             }
 
             //load migration to create db
-            if(is_dir(__DIR__ .$module.'/Migration')){
+            if(is_dir(__DIR__ .'/'.$module.'/Migration')){
                 $this->loadMigrationsFrom(__DIR__  .'/'.$module.'/Migration');
             }
 
