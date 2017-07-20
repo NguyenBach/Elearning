@@ -1,65 +1,156 @@
 @extends('Core::template.index')
 @section('content')
-    <div class="article">
-        <h2><span>Excellent Solution</span> For Your Business</h2>
-        <p class="infopost">Posted <span class="date">on 11 sep 2018</span> by <a href="#">Admin</a> &nbsp;&nbsp;|&nbsp;&nbsp;
-            Filed under <a href="#">templates</a>, <a href="#">internet</a></p>
-        <div class="clr"></div>
-        <div class="img"><img src="images/img1.jpg" width="178" height="185" alt="" class="fl"/></div>
-        <div class="post_content">
-            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. <a href="#">Suspendisse bibendum.
-                    Cras id urna.</a> Morbi tincidunt, orci ac convallis aliquam, lectus turpis varius lorem, eu posuere
-                nunc justo tempus leo. Donec mattis, purus nec placerat bibendum, dui pede condimentum odio, ac blandit
-                ante orci ut diam. Cras fringilla magna. Phasellus suscipit, leo a pharetra condimentum, lorem tellus
-                eleifend magna, eget fringilla velit magna id neque. Curabitur vel urna. In tristique orci porttitor
-                ipsum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum.
-                Cras id urna. Morbi tincidunt, orci ac convallis aliquam, lectus turpis varius lorem, eu posuere nunc
-                justo tempus leo.</p>
-            <p><strong>Aenean consequat porttitor adipiscing. Nam pellentesque justo ut tortor congue lobortis. Donec
-                    venenatis sagittis fringilla.</strong> Etiam nec libero magna, et dictum velit. Proin mauris mauris,
-                mattis eu elementum eget, commodo in nulla. Mauris posuere venenatis pretium. Maecenas a dui sed lorem
-                aliquam dictum. Nunc urna leo, imperdiet eu bibendum ac, pretium ac massa. Cum sociis natoque penatibus
-                et magnis dis parturient montes, nascetur ridiculus mus. Nulla facilisi. Quisque condimentum luctus
-                ullamcorper.</p>
-            <p class="spec"><a href="#" class="rm">Read more</a> <a href="#" class="com">Comments <span>11</span></a>
-            </p>
-        </div>
-        <div class="clr"></div>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="grey-box-icon b1">
+                <h4>Online Courses</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tempus eleifend risus ut congue
+                    eset nec lacus elit dor broma.</p>
+                <p><a href="#"><em>Read More</em></a></p>
+            </div><!--grey box -->
+        </div><!--/span3-->
+        <div class="col-md-3">
+            <div class="grey-box-icon b2">
+                <h4>Meet our Staff</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tempus eleifend risus ut congue
+                    eset nec lacus elit dor broma.</p>
+                <p><a href="#"><em>Read More</em></a></p>
+            </div><!--grey box -->
+        </div><!--/span3-->
+        <div class="col-md-3">
+            <div class="grey-box-icon b3">
+                <h4>Latest Updates</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tempus eleifend risus ut congue
+                    eset nec lacus elit dor broma.</p>
+                <p><a href="#"><em>Read More</em></a></p>
+            </div><!--grey box -->
+        </div><!--/span3-->
+        <div class="col-md-3">
+            <div class="grey-box-icon b4">
+                <h4>Placements</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tempus eleifend risus ut congue
+                    eset nec lacus elit dor broma.</p>
+                <p><a href="#"><em>Read More →</em></a></p>
+            </div><!--grey box -->
+        </div><!--/span3-->
     </div>
-    <div class="article">
-        <h2><span>We'll Make Sure Template</span> Works For You</h2>
-        <p class="infopost">Posted <span class="date">on 29 aug 2016</span> by <a href="#">Admin</a> &nbsp;&nbsp;|&nbsp;&nbsp;
-            Filed under <a href="#">templates</a>, <a href="#">internet</a></p>
-        <div class="clr"></div>
-        <div class="img"><img src="images/img2.jpg" width="178" height="185" alt="" class="fl"/></div>
-        <div class="post_content">
-            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum. Cras id
-                urna. <a href="#">Morbi tincidunt, orci ac convallis aliquam, lectus turpis varius lorem, eu posuere
-                    nunc justo tempus leo.</a> Donec mattis, purus nec placerat bibendum, dui pede condimentum odio, ac
-                blandit ante orci ut diam. Cras fringilla magna. Phasellus suscipit, leo a pharetra condimentum, lorem
-                tellus eleifend magna, eget fringilla velit magna id neque. Curabitur vel urna. In tristique orci
-                porttitor ipsum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse
-                bibendum. Cras id urna. Morbi tincidunt, orci ac convallis aliquam.</p>
-            <p><strong>Aenean consequat porttitor adipiscing. Nam pellentesque justo ut tortor congue lobortis. Donec
-                    venenatis sagittis fringilla.</strong> Etiam nec libero magna, et dictum velit. Proin mauris mauris,
-                mattis eu elementum eget, commodo in nulla. Mauris posuere venenatis pretium. Maecenas a dui sed lorem
-                aliquam dictum. Nunc urna leo, imperdiet eu bibendum ac, pretium ac massa. Cum sociis natoque penatibus
-                et magnis dis parturient montes, nascetur ridiculus mus. Nulla facilisi. Quisque condimentum luctus
-                ullamcorper.</p>
-            <p class="spec"><a href="#" class="rm">Read more</a> <a href="#" class="com">Comments <span>7</span></a></p>
-        </div>
-        <div class="clr"></div>
-    </div>
-    <p class="pages">
-        <small>Page 1 of 2</small>
-        <span>1</span> <a href="#">2</a> <a href="#">&raquo;</a></p>
 @stop
 @section('slider')
-    <div class="slider">
-        <div id="coin-slider"><a href="#"><img src="images/slide1.jpg" width="960" height="360" alt=""/><span> Tusce nec iaculis risus hasellus nec sem sed tellus malesuada porttitor. Mauris scelerisque feugiat ante in vulputate. Nam sit amet ullamcorper tortor. Phasellus posuere facilisis cursus. Nunc est lorem, dictum at scelerisque sit amet, faucibus et est. Proin mattis ipsum quis arcu aliquam molestie.</span></a>
-            <a href="#"><img src="images/slide2.jpg" width="960" height="360" alt=""/><span> Tusce nec iaculis risus hasellus nec sem sed tellus malesuada porttitor. Mauris scelerisque feugiat ante in vulputate. Nam sit amet ullamcorper tortor. Phasellus posuere facilisis cursus. Nunc est lorem, dictum at scelerisque sit amet, faucibus et est. Proin mattis ipsum quis arcu aliquam molestie.</span></a>
-            <a href="#"><img src="images/slide3.jpg" width="960" height="360" alt=""/><span> Tusce nec iaculis risus hasellus nec sem sed tellus malesuada porttitor. Mauris scelerisque feugiat ante in vulputate. Nam sit amet ullamcorper tortor. Phasellus posuere facilisis cursus. Nunc est lorem, dictum at scelerisque sit amet, faucibus et est. Proin mattis ipsum quis arcu aliquam molestie.</span></a>
+    <header id="head">
+        <div class="container">
+            <div class="heading-text">
+                <h1 class="animated flipInY delay1">Start Online Education</h1> <br/>
+                <p>Free Online education template for elearning and online education institute.</p>
+            </div>
+
+            <div class="fluid_container">
+                <div class="camera_wrap camera_emboss pattern_1" id="camera_wrap_4">
+                    <div data-thumb="{{url('images/slides/thumbs/img1.jpg')}}"
+                         data-src="{{url('images/slides/img1.jpg')}}">
+                        <h2>We develop.</h2>
+                    </div>
+                    <div data-thumb="{{url('images/slides/thumbs/img2.jpg')}}"
+                         data-src="{{url('images/slides/img2.jpg')}}">
+                    </div>
+                    <div data-thumb="{{url('images/slides/thumbs/img3.jpg')}}"
+                         data-src="{{url('images/slides/img3.jpg')}}">
+                    </div>
+                </div><!-- #camera_wrap_3 -->
+            </div><!-- .fluid_container -->
         </div>
-        <div class="clr"></div>
-    </div>
+    </header>
+@stop
+@section('othercontent')
+    <section class="news-box top-margin">
+        <div class="container">
+            <h2><span>New Courses</span></h2>
+            <div class="row">
+
+                <div class="col-lg-4 col-md-4 col-sm-12">
+                    <div class="newsBox">
+                        <div class="thumbnail">
+                            <figure><img src="assets/images/news2.jpg" alt=""></figure>
+                            <div class="caption maxheight2">
+                                <div class="box_inner">
+                                    <div class="box">
+                                        <p class="title"><h5>Developer</h5></p>
+                                        <p>Lorem ipsum dolor sit amet, conc tetu er adipi scing. Praesent ves tibuum
+                                            molestie lacuiirhs. Aenean.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12">
+                    <div class="newsBox">
+                        <div class="thumbnail">
+                            <figure><img src="assets/images/news3.jpg" alt=""></figure>
+                            <div class="caption maxheight2">
+                                <div class="box_inner">
+                                    <div class="box">
+                                        <p class="title"><h5>Photography </h5></p>
+                                        <p>Lorem ipsum dolor sit amet, conc tetu er adipi scing. Praesent ves tibuum
+                                            molestie lacuiirhs. Aenean.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12">
+                    <div class="newsBox">
+                        <div class="thumbnail">
+                            <figure><img src="assets/images/news4.jpg" alt=""></figure>
+                            <div class="caption maxheight2">
+                                <div class="box_inner">
+                                    <div class="box">
+                                        <p class="title"><h5>Audio Editing</h5></p>
+                                        <p>Lorem ipsum dolor sit amet, conc tetu er adipi scing. Praesent ves tibuum
+                                            molestie lacuiirhs. Aenean.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+@stop
+@section('beforefooter')
+    <section class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="title-box clearfix "><h2 class="title-box_primary">About Us</h2></div>
+                <p><span>Perspiciatis unde omnis iste natus error sit voluptatem. Cum sociis natoque penatibus et magnis dis parturient montes ascetur ridiculus musull dui.</span>
+                </p>
+                <p>Lorem ipsumulum aenean noummy endrerit mauris. Cum sociis natoque penatibus et magnis dis parturient
+                    montes ascetur ridiculus mus. Null dui. Fusce feugiat malesuada odio.</p>
+                <p>Lorem ipsumulum aenean noummy endrerit mauris. Cum sociis natoque penatibus et magnis dis parturient
+                    montes ascetur ridiculus mus. Null dui. Fusce feugiat malesuada odio.</p>
+                <a href="#" title="read more" class="btn-inline " target="_self">read more</a></div>
+
+
+            <div class="col-md-4">
+                <div class="title-box clearfix "><h2 class="title-box_primary">Up Coming Courses</h2></div>
+                <div class="list styled custom-list">
+                    <ul>
+                        <li><a title="Snatoque penatibus et magnis dis partu rient montes ascetur ridiculus mus."
+                               href="#">Mathematics and Computer Science</a></li>
+                        <li><a title="Fusce feugiat malesuada odio. Morbi nunc odio gravida at cursus nec luctus."
+                               href="#">Mathematics and Philosophy</a></li>
+                        <li><a title="Penatibus et magnis dis parturient montes ascetur ridiculus mus." href="#">Philosophy
+                                and Modern Languages</a></li>
+                        <li><a title="Morbi nunc odio gravida at cursus nec luctus a lorem. Maecenas tristique orci."
+                               href="#">History (Ancient and Modern)</a></li>
+                        <li><a title="Snatoque penatibus et magnis dis partu rient montes ascetur ridiculus mus."
+                               href="#">Classical Archaeology and Ancient History</a></li>
+                        <li><a title="Fusce feugiat malesuada odio. Morbi nunc odio gravida at cursus nec luctus."
+                               href="#">Physics and Philosophy</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 @stop

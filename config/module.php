@@ -10,6 +10,10 @@ return  [
     'modules' => [
         'Core',
         'Course',
-        'Question'
+        'Question',
+        'Admin'
+    ],
+    'activitymodules'=>[
+        'Audio'
     ]
 ];
