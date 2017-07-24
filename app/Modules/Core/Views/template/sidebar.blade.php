@@ -1,46 +1,66 @@
-<div class="searchform">
-    <form id="formsearch" name="formsearch" method="post" action="#">
-            <span>
-            <input name="editbox_search" class="editbox_search" id="editbox_search" maxlength="80"
-                   value="Search our ste:" type="text"/>
-            </span>
-        <input name="button_search" src="images/search.gif" class="button_search" type="image"/>
-    </form>
-</div>
-<div class="clr"></div>
-<div class="gadget">
-    <h2 class="star"><span>Sidebar</span> Menu</h2>
-    <div class="clr"></div>
-    <ul class="sb_menu">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">TemplateInfo</a></li>
-        <li><a href="#">Style Demo</a></li>
-        <li><a href="#">Blog</a></li>
-        <li><a href="#">Archives</a></li>
-        <li><a href="#">Web Templates</a></li>
-    </ul>
-</div>
-<div class="gadget">
-    <h2 class="star"><span>Sponsors</span></h2>
-    <div class="clr"></div>
-    <ul class="ex_menu">
-        <li><a href="#">Lorem ipsum dolor</a><br/>
-            Donec libero. Suspendisse bibendum
-        </li>
-        <li><a href="#">Dui pede condimentum</a><br/>
-            Phasellus suscipit, leo a pharetra
-        </li>
-        <li><a href="#">Condimentum lorem</a><br/>
-            Tellus eleifend magna eget
-        </li>
-        <li><a href="#">Fringilla velit magna</a><br/>
-            Curabitur vel urna in tristique
-        </li>
-        <li><a href="#">Suspendisse bibendum</a><br/>
-            Cras id urna orbi tincidunt orci ac
-        </li>
-        <li><a href="#">Donec mattis</a><br/>
-            purus nec placerat bibendum
-        </li>
-    </ul>
+<div class="courseArchive_sidebar">
+    <!-- start single sidebar -->
+    <div class="single_sidebar">
+        <h2>Events <span class="fa fa-angle-double-right"></span></h2>
+        <ul class="news_tab">
+            <li>
+                <div class="media">
+                    <div class="media-left">
+                        <a href="#" class="news_img">
+                            <img alt="img" src="img/news.jpg" class="media-object">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <a href="#">Dummy text of the printing and typesetting industry</a>
+                        <span class="feed_date">27.02.15</span>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="media">
+                    <div class="media-left">
+                        <a href="#" class="news_img">
+                            <img alt="img" src="img/news.jpg" class="media-object">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <a href="#">Dummy text of the printing and typesetting industry</a>
+                        <span class="feed_date">28.02.15</span>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="media">
+                    <div class="media-left">
+                        <a href="#" class="news_img">
+                            <img alt="img" src="img/news.jpg" class="media-object">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <a href="#">Dummy text of the printing and typesetting industry</a>
+                        <span class="feed_date">28.02.15</span>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!-- End single sidebar -->
+    <!-- start single sidebar -->
+    <div class="single_sidebar">
+        <h2>Quick Links <span class="fa fa-angle-double-right"></span></h2>
+        <ul>
+            <li><a href="#">Link 1</a></li>
+            <li><a href="#">Link 2</a></li>
+            <li><a href="#">Link 3</a></li>
+            <li><a href="#">Link 4</a></li>
+            <li><a href="#">Link 5</a></li>
+        </ul>
+    </div>
+    <!-- End single sidebar -->
+    <!-- start single sidebar -->
+    <div class="single_sidebar">
+        <h2>Sponsor Add <span class="fa fa-angle-double-right"></span></h2>
+        <a class="side_add" href="#"><img src="img/side-add.jpg" alt="img"></a>
+    </div>
+    <!-- End single sidebar -->
 </div>
