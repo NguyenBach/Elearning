@@ -6,7 +6,7 @@
  * Time: 22:09
  */
 
-namespace App\Modules\Course;
+namespace App\Modules\Course\Model;
 
 
 use Illuminate\Database\Eloquent\Model;
@@ -15,16 +15,19 @@ class Course extends Model
 {
     protected $table = 'course';
 
+
+
     public function addCourse($data){
         $this->id = $data['id'];
         $this->fullname = $data['fullname'];
+        $this->shortname = $data['shortname'];
         $this->introduction = $data['intro'];
         $this->feature_picture = $data['picture'];
         $this->start_date = $data['startdate'];
         $this->course_format = $data['courseformat'];
         $this->number_lessions = $data['numberlessons'];
         $this->active = $data['active'];
-        $this->visible = $data['visible'];
+        $this->visiblea = 1;
         $this->setCreatedAt(time());
         $id = $this->save();
         return $id;
@@ -41,5 +44,12 @@ class Course extends Model
         }
         $id = $course->save();
         return $id;
+    }
+    public function getLastIndex(){
+        $course = self::all()->last();
+        if(is_null($course)){
+            return 0;
+        }
+        return $course->id;
     }
 }

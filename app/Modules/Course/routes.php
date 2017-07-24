@@ -10,9 +10,13 @@ Route::group([
     'prefix' => '/course',
     'namespace' => 'App\Modules\Course\Controller'
 ],function (){
-    Route::get('/test',function (){
-        return view('Course::form.NewCourse');
+    Route::get('/',function (){
+        return view('Course::index');
     });
+    Route::get('/newcourse',function (){
+       return view('Course::form.NewCourse');
+    });
+    Route::post('/newcourse','CourseController@newCourse');
     Route::get('/{id}',function (){
         return view('Course::course');
     });

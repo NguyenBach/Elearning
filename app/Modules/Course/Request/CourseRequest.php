@@ -9,9 +9,10 @@
 namespace App\Modules\Course\Request;
 
 
+use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Request;
 
-class CourseRequest extends Request
+class CourseRequest extends FormRequest
 {
     public function authorize(){
         return true;
