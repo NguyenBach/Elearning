@@ -1,0 +1,8 @@
+section#lesson {
+  height: 100px;
+  margin-top: 140px;
+}
+section#lesson .lesson-content .tab-content {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
