@@ -25,5 +25,6 @@
 </section>
 @include('Core::template.footer')
 @include('Core::template.script')
+@section('script')@show
 </body>
 </html>
