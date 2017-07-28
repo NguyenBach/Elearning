@@ -27,7 +27,8 @@ class CourseRequest extends FormRequest
             'courseformat' => 'required',
             'numberlessons' => 'required',
             'active' => 'required',
-            'visible' => 'required'
+            'visible' => 'required',
+            'action' =>'required'
         ];
     }
 }

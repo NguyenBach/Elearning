@@ -11,9 +11,10 @@ Route::group([
     'namespace' => 'App\Modules\Course\Controller'
 ],function (){
     Route::get('/','CourseController@index');
-    Route::get('/newcourse',function (){
-       return view('Course::form.NewCourse');
-    });
-    Route::post('/newcourse','CourseController@newCourse');
+    Route::get('/editcourse','CourseController@editCourse');
+    Route::post('/editcourse','CourseController@newCourse');
     Route::get('/{id}',['uses'=>'CourseController@showCourse','as'=>'courseview']);
+    Route::get('/{id}/{lessonid}','LessonController@showLesson');
+    Route::get('/{id}/editlesson/{lessonid}','LessonController@editLesson');
+    Route::post('/{id}/editlesson/{lessonid}','LessonController@newLesson');
 });
