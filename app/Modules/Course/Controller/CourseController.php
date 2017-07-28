@@ -10,6 +10,7 @@ namespace App\Modules\Course\Controller;
 
 
 use App\Http\Controllers\Controller;
+use App\Modules\Course\Lesson;
 use App\Modules\Course\Model\Course;
 use App\Modules\Course\Request\CourseRequest;
 
@@ -19,6 +20,11 @@ class CourseController extends Controller
     public function __construct()
     {
         $this->course = new Course();
+    }
+
+    public function index(){
+        $courses = $this->course->getAllActiveCourse();
+        return view('Course::index',['courses'=>$courses]);
     }
 
     public function newCourse(CourseRequest $request){
@@ -34,5 +40,11 @@ class CourseController extends Controller
         $data['id'] = $this->course->getLastIndex()+1;
         $id = $this->course->addCourse($data);
         return response()->redirectTo('/course/'.$id);
+    }
+    public function showCourse($id){
+        $course = $this->course->find($id);
+        $lessons = new Lesson();
+        $lessons = $lessons->where('course_id',$id)->get();
+        return view('Course::course',['course'=>$course,'lessons'=>$lessons]);
     }
 }

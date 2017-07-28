@@ -25,7 +25,7 @@ class Course extends Model
         $this->feature_picture = $data['picture'];
         $this->start_date = $data['startdate'];
         $this->course_format = $data['courseformat'];
-        $this->number_lessions = $data['numberlessons'];
+        $this->number_lessons = $data['numberlessons'];
         $this->active = $data['active'];
         $this->visiblea = 1;
         $this->setCreatedAt(time());
@@ -51,5 +51,12 @@ class Course extends Model
             return 0;
         }
         return $course->id;
+    }
+
+    public function getAllActiveCourse(){
+        return $this->where('active',1)->where('visiblea',1)->get();
+    }
+    public function get10FirstCourse(){
+        return $this->orderBy('created_at','desc')->limit(10)->get();
     }
 }
