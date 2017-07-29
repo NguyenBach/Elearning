@@ -21,8 +21,8 @@
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul id="top-menu" class="nav navbar-nav navbar-right main-nav">
-                        <li class="active"><a href="index.html">Home</a></li>
-                        <li><a href="course-archive.html">Course</a></li>
+                        <li class="active"><a href="/">Home</a></li>
+                        <li><a href="{{route('course::index')}}">Course</a></li>
                         <li><a href="scholarship.html">Scholarship</a></li>
                         <li><a href="events-archive.html">Events</a></li>
                         <li><a href="gallery.html">Gallery</a></li>

@@ -10,11 +10,11 @@ Route::group([
     'prefix' => '/course',
     'namespace' => 'App\Modules\Course\Controller'
 ],function (){
-    Route::get('/','CourseController@index');
+    Route::get('/','CourseController@index')->name('index');
     Route::get('/editcourse','CourseController@editCourse');
     Route::post('/editcourse','CourseController@newCourse');
     Route::get('/{id}',['uses'=>'CourseController@showCourse','as'=>'courseview']);
-    Route::get('/{id}/{lessonid}','LessonController@showLesson');
+    Route::get('/{id}/{lessonid}','LessonController@showLesson')->name('lesson');
     Route::get('/{id}/editlesson/{lessonid}','LessonController@editLesson');
     Route::post('/{id}/editlesson/{lessonid}','LessonController@newLesson');
 });

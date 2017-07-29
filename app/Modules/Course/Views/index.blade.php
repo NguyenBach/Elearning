@@ -13,7 +13,7 @@
                         </div>
                     </div>
                     <div class="singCourse_content">
-                        <h3 class="singCourse_title"><a href="course-single.html">{{$course->fullname}}</a></h3>
+                        <h3 class="singCourse_title"><a href="{{route('course::courseview',['id'=>$course->id])}}">{{$course->fullname}}</a></h3>
                         <p class="singCourse_price"><span>Number Lessons:</span> {{$course->number_lessons}}</p>
                         <p>{{$course->introduction}}</p>
                     </div>

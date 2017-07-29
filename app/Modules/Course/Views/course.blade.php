@@ -27,7 +27,7 @@
                 <tbody>
                 @foreach($lessons as $lesson)
                 <tr>
-                    <td><a href="lesson.html">{{$lesson->title}}</a></td>
+                    <td><a href="{{route('course::lesson',['id'=>$course->id,'lessonid'=>$lesson->id])}}">{{$lesson->title}}</a></td>
                     <td>Dr. Steve Palmer</td>
                 </tr>
                 @endforeach
