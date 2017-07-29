@@ -40,8 +40,8 @@ class CourseController extends Controller
         $data['numberlessons'] = $request->input('numberlessons');
         $data['active'] = $request->input('active');
         $data['visible'] = $request->input('visible');
-        $data['picture'] = ' ';
         $id = $request->input('id');
+        $data['picture'] = $this->uploadFile($request,$id);
         $data['id'] = $id;
         $action = $request->input('action');
         if($action === 'new'){
@@ -80,5 +80,15 @@ class CourseController extends Controller
         $lessons = new Lesson();
         $lessons = $lessons->where('course_id', $id)->get();
         return view('Course::course', ['course' => $course, 'lessons' => $lessons]);
+    }
+
+    public function uploadFile(Request $request,$id){
+        $file = $request->file('featurepicture');
+        $fileName = $file->getClientOriginalName();
+        $fileName = $id.'_'.time().'_'.$fileName;
+        $destinationPath = public_path('/featureimage');
+        $file->move($destinationPath,$fileName);
+        $url = 'featureimage/'.$fileName;
+        return $url;
     }
 }

@@ -3,7 +3,7 @@
     <div class="courseArchive_content">
         <div class="singlecourse_ferimg_area">
             <div class="singlecourse_ferimg">
-                <img src="{{url('img/course-single.jpg')}}" alt="img">
+                <img src="{{url($course->feature_picture)}}" alt="img">
             </div>
             <div class="singlecourse_bottom">
                 <h2>{{$course->fullname}}</h2>
