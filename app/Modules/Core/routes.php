@@ -8,3 +8,10 @@
 Route::get('/', function () {
     return view('Core::index');
 });
+Route::get('/login',function (){
+    return view('Core::login');
+});
+Route::post('/login','App\Modules\Core\Controller\LoginController@login');
+Route::get('/admin',function (){
+    return view('Admin::index');
+});
