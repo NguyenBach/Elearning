@@ -5,6 +5,8 @@ namespace App\Modules\Question\Controllers;
 use App\Http\Controllers\Controller;
 use App\Modules\Question\Models\QuestionBank;
 use App\Modules\Question\Models\Question;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Datatables;
 
 class QuestionController extends Controller
@@ -14,18 +16,20 @@ class QuestionController extends Controller
     }
 
     public function index (){
-        $question_banks = QuestionBank::all();
-        return view('Question::index', ['question_banks' => $question_banks]);
+        return view('Question::index');
     }
 
-    public function create(){
-        $question_bank = new QuestionBank();
-        $question_bank->name = $request->name;
-        $question_bank->description = $request->description;
-        $question_bank->difficulty = $request->difficulty;
-        $question_bank->save();
+    public function create(Request $request){
+        if($request->isMethod('post')){
+            $question_bank = new QuestionBank;
 
-        return redirect('/question');
+            $question_bank->name = $request->input('name');
+            $question_bank->description = $request->input('description');
+            $question_bank->difficulty = $request->input('difficulty');
+
+            $question_bank->save();
+        }
+        return view('Question::create');
 
     }
 
