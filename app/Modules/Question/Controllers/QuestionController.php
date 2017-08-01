@@ -20,17 +20,14 @@ class QuestionController extends Controller
     }
 
     public function create(Request $request){
+        $question_bank = new QuestionBank;
         if($request->isMethod('post')){
-            $question_bank = new QuestionBank;
-
-            $question_bank->name = $request->input('name');
-            $question_bank->description = $request->input('description');
-            $question_bank->difficulty = $request->input('difficulty');
-
+            $question_bank->fill($request->all());
             $question_bank->save();
-        }
-        return view('Question::create');
 
+            return  redirect('question');
+        }
+        return view('Question::create', ['question_bank' => $question_bank]);
     }
 
     public function get_datatable(){
