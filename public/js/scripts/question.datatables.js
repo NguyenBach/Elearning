@@ -4,10 +4,11 @@ jQuery(document).ready(function() {
         serverSide: true,
         ajax: window.location.pathname + '/datatable',
         columns: [
-            { data: 'id', name: 'id' },
-            { data: 'name', name: 'name' },
-            { data: 'description', name: 'description' },
-            { data: 'difficulty', name: 'difficulty' },
+            { data: 'id', name: 'question_bank.id' },
+            { data: 'name', name: 'question_bank.name' },
+            { data: 'description', name: 'question_bank.description' },
+            { data: 'difficulty', name: 'question_bank.difficulty' },
+            { data: 'total', name: 'total', searchable: false },
             { data: null, name: null },
         ],
         columnDefs : [
