@@ -6,20 +6,20 @@
             <h3 class="panel-title">Question Banks</h3>
         </div>
         <div class="panel-body">
-            {!! Form::open(['url' => 'question/create']) !!}
+            {!! Form::model($question_bank, ['url' => ['question/edit', $question_bank->id]]) !!}
                 <div class="form-group">
                     {!! Form::label('name', 'Name') !!}
-                    {!! Form::text('name', '', ['class' => 'form-control', 'required' => 'required']) !!}
+                    {!! Form::text('name', null, ['class' => 'form-control', 'required' => 'required']) !!}
                 </div>
                 <div class="form-group">
                     {!! Form::label('description', 'Description') !!}
-                    {!! Form::text('description', '', ['class' => 'form-control', 'required' => 'required']) !!}
+                    {!! Form::text('description', null, ['class' => 'form-control', 'required' => 'required']) !!}
                 </div>
                 <div class="form-group">
                     {!! Form::label('difficulty', 'Difficulty') !!}
                     {!! Form::select('difficulty', [0 => "BEGINNER", 1 => "INTERMEDIATE", 2 => "ADVANCED"], null, ['class' => 'form-control']) !!}
                 </div>
-                <button class="btn btn-success" type="submit">Add new question bank</button>
+                <button class="btn btn-success" type="submit">Save changes</button>
             {!! Form::close() !!}
         </div>
     </div>

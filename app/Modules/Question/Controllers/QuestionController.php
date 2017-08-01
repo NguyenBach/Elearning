@@ -30,6 +30,16 @@ class QuestionController extends Controller
         return view('Question::create', ['question_bank' => $question_bank]);
     }
 
+    public function edit(Request $request, $id){
+        $question_bank = QuestionBank::find($id);
+        if($request->isMethod('post')){
+            $question_bank->update($request->all());
+            return  redirect('question');
+        }
+
+        return view('Question::edit', ['question_bank' => $question_bank]);
+    }
+
     public function get_datatable(){
         $question_bank = QuestionBank::select([
             'question_bank.id',

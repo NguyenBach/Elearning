@@ -12,6 +12,10 @@ Route::group([
 ],function (){
     Route::get('/','QuestionController@index');
     Route::get('/datatable','QuestionController@get_datatable');
+
     Route::get('/create','QuestionController@create');
     Route::post('/create','QuestionController@create');
+
+    Route::get('/edit/{id}','QuestionController@edit');
+    Route::post('/edit/{id}','QuestionController@edit');
 });
