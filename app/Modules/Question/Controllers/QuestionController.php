@@ -40,6 +40,11 @@ class QuestionController extends Controller
         return view('Question::edit', ['question_bank' => $question_bank]);
     }
 
+    public function delete($id){
+        QuestionBank::destroy($id);
+        return redirect('question');
+    }
+
     public function get_datatable(){
         $question_bank = QuestionBank::select([
             'question_bank.id',

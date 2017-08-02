@@ -18,4 +18,6 @@ Route::group([
 
     Route::get('/edit/{id}','QuestionController@edit');
     Route::post('/edit/{id}','QuestionController@edit');
+
+    Route::get('/delete/{id}','QuestionController@delete');
 });

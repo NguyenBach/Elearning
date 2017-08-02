@@ -1,3 +1,9 @@
+function deleteQuestionBank(id) {
+    if (confirm('Are you sure to delete this item?')) {
+        window.location.href = window.location.pathname + '/delete/' + id;
+    }
+}
+
 jQuery(document).ready(function() {
     $('#questions-table').DataTable({
         processing: true,
@@ -24,7 +30,7 @@ jQuery(document).ready(function() {
             // Action Column
             var detailBtn = '<a class="btn btn-sm btn-info" href="' + window.location.pathname + 'question/' + data.id + '">Detail</a>';
             var editBtn   = '<a class="btn btn-sm btn-info" href="' + window.location.pathname + '/edit/' + data.id + '">Edit</a>';
-            var deleteBtn = '<a class="btn btn-sm btn-danger" href="' + window.location.pathname + '/delete/' + data.id + '">Delete</a>';
+            var deleteBtn = '<a class="btn btn-sm btn-danger" onclick="deleteQuestionBank(' + data.id + ')">Delete</a>';
             var space     = '<span> </span>';
             var actionCol = detailBtn + space + editBtn + space + deleteBtn;
             $('td', row).eq(-1).html(actionCol);
