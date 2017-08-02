@@ -22,4 +22,6 @@ Route::group([
     Route::get('/delete/{id}','QuestionController@delete');
 
     Route::get('/detail/{id}','QuestionController@get_detail');
+
+    Route::post('/create_question','QuestionController@create_question');
 });

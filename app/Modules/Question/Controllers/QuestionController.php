@@ -50,6 +50,17 @@ class QuestionController extends Controller
         return view('Question::detail', ['detail' => $detail]);;
     }
 
+    public function create_question(Request $request){
+        $question = new Question;
+        if($request->isMethod('post')){
+            $question->fill($request->all());
+            $question->save();
+
+            return redirect()->back();
+        }
+        return redirect()->back();
+    }
+
     public function get_datatable(){
         $question_bank = QuestionBank::select([
             'question_bank.id',
