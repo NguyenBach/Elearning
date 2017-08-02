@@ -45,6 +45,11 @@ class QuestionController extends Controller
         return redirect('question');
     }
 
+    public function get_detail($id){
+        $detail = QuestionBank::get_detail($id);
+        return view('Question::detail', ['detail' => $detail]);;
+    }
+
     public function get_datatable(){
         $question_bank = QuestionBank::select([
             'question_bank.id',
