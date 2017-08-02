@@ -25,7 +25,7 @@ class QuestionController extends Controller
             $question_bank->fill($request->all());
             $question_bank->save();
 
-            return  redirect('question');
+            return redirect('question');
         }
         return view('Question::create', ['question_bank' => $question_bank]);
     }
