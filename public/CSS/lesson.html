@@ -55,6 +55,9 @@
 
     <!--Thang css-->
     <link rel="stylesheet" href="css/main.css">
+
+    <!--pdf viewer-->
+    <script src="../node_modules/pdfobject/pdfobject.min.js"></script>
 </head>
 <body>
 
@@ -128,43 +131,62 @@
                         <li><a data-toggle="tab" href="#youtube">Youtube</a></li>
                         <li><a data-toggle="tab" href="#audio">Audio</a></li>
                         <li><a data-toggle="tab" href="#filePDF">File PDF</a></li>
+                        <li><a data-toggle="tab" href="#filepptx">File pptx</a></li>
                     </ul>
                     <div class="tab-content">
                         <div id="text" class="tab-pane fade in active">
                             <p>There are many variations of passages of Lorem Ipsum available, but the majority have
-                                suffered alteration in some form, by injected humour, or randomised words which don't look
-                                even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be
+                                suffered alteration in some form, by injected humour, or randomised words which don't
+                                look
+                                even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to
+                                be
                                 sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum
-                                generators on the Internet tend to repeat predefined chunks as necessary, making this the
-                                first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined
-                                with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable.
+                                generators on the Internet tend to repeat predefined chunks as necessary, making this
+                                the
+                                first true generator on the Internet. It uses a dictionary of over 200 Latin words,
+                                combined
+                                with a handful of model sentence structures, to generate Lorem Ipsum which looks
+                                reasonable.
                                 The generated Lorem Ipsum is therefore always free from repetition, injected humour, or
                                 non-characteristic words etc.
 
-                                It is a long established fact that a reader will be distracted by the readable content of a
+                                It is a long established fact that a reader will be distracted by the readable content
+                                of a
                                 page when looking at its layout. The point of using Lorem Ipsum is that it has a
                                 more-or-less normal distribution of letters, as opposed to using 'Content here, content
-                                here', making it look like readable English. Many desktop publishing packages and web page
-                                editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will
-                                uncover many web sites still in their infancy. Various versions have evolved over the years,
+                                here', making it look like readable English. Many desktop publishing packages and web
+                                page
+                                editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum'
+                                will
+                                uncover many web sites still in their infancy. Various versions have evolved over the
+                                years,
                                 sometimes by accident, sometimes on purpose (injected humour and the like).
 
                                 The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those
-                                interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are
-                                also reproduced in their exact original form, accompanied by English versions from the 1914
+                                interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero
+                                are
+                                also reproduced in their exact original form, accompanied by English versions from the
+                                1914
                                 translation by H. Rackham.</p>
                         </div>
                         <div id="video" class="tab-pane fade">
                             <video src="video/video1.mp4" width="100%" height="400px" controls></video>
                         </div>
                         <div id="youtube" class="tab-pane fade">
-                            <iframe src="https://www.youtube.com/embed/BamZARzsIgs" frameborder="0" width="100%" height="500px"></iframe>
+                            <iframe src="https://www.youtube.com/embed/BamZARzsIgs" frameborder="0" width="100%"
+                                    height="500px"></iframe>
                         </div>
                         <div id="audio" class="tab-pane fade">
                             <audio src="audio/Shape-of-You-Ed-Sheeran.mp3" controls></audio>
                         </div>
                         <div id="filePDF" class="tab-pane fade">
-
+                            <div id="pdf" style="width:100%; height: 500px;"></div>
+                            <script>
+                                PDFObject.embed('PDF/Slide_0.pdf', '#pdf');
+                            </script>
+                        </div>
+                        <div id="filepptx" class="tab-pane fade">
+                            <object data="Slide/C1.pptx" type="application/vnd.openxmlformats-officedocument.presentationml.presentation"></object>
                         </div>
                     </div>
                 </div>
