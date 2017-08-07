@@ -1856,3 +1856,7 @@ div[data-dimension] {
   padding: 7px;
 
 }
+
+body > section{
+  margin-top: 77px;
+}
