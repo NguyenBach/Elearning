@@ -14,6 +14,7 @@ return  [
         'Admin'
     ],
     'activitymodules'=>[
-        'Audio'
+        'Audio',
+        'Text',
     ]
 ];
