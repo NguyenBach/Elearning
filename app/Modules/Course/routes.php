@@ -18,3 +18,11 @@ Route::group([
     Route::get('/{id}/editlesson/{lessonid}','LessonController@editLesson');
     Route::post('/{id}/editlesson/{lessonid}','LessonController@newLesson');
 });
+
+Route::group([
+    'as' => 'CourseAPI::',
+    'prefix' => '/api/course',
+    'namespace'=> 'App\Modules\Course\Controller'
+],function (){
+    Route::get('/allactivity','ActivityController@getAllActivityType');
+});

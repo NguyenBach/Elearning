@@ -1830,4 +1830,32 @@ div[data-dimension] {
 @media(max-width:320px ){
 
 	
+<<<<<<< HEAD
+=======
+}
+
+/*Login Page*/
+.login{
+  margin-top: 70px;
+  margin-left: 50px;
+  display: block;
+}
+.login input{
+  border: 0;
+  border-bottom: 1px solid #aaaaaa;
+  padding: 10px 10px 5px 10px;
+  font-size: 15px;
+}
+.login label{
+  margin-right: 15px;
+}
+.login button{
+  margin: 15px;
+  padding: 7px;
+
+}
+
+body > section{
+  margin-top: 77px;
+>>>>>>> 5930aaa2ea6bfbc188e7f13ce224969a2ef47b34
 }

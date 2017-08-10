@@ -1,5 +1,6 @@
 @extends('Core::template.index')
 @section('slider')
+    <?php var_dump(session('permission')) ?>
     <section id="slider">
         <div class="row">
             <div class="col-lg-12 col-md-12">
