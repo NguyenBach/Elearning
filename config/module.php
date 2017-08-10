@@ -12,7 +12,8 @@ return  [
         'Course',
         'Question',
         'Admin',
-        'User'
+        'User',
+        'Dashboard'
     ],
     'activitymodules'=>[
         'Audio',

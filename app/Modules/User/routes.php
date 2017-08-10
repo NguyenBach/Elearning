@@ -13,4 +13,6 @@ Route::group([
     Route::get('/register',function (){
         return view('User::register');
     });
+    Route::post('/register','UserController@register');
+    Route::get('/logout','UserController@logout');
 });

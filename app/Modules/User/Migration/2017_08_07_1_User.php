@@ -20,7 +20,7 @@ class User extends Migration
     public function up()
     {
         Schema::create('user', function (Blueprint $table) {
-            $table->increments('id');
+            $table->integer('id')->primary();
             $table->string('fullname');
             $table->date('birthday');
             $table->string('email');
