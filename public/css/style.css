@@ -969,7 +969,7 @@ div[data-dimension] {
 /*--------------------*/
 
 #imgBanner {
-  background-image: url("../img/banner.jpg");
+  background-image: url("img/banner.jpg");
   background-repeat: no-repeat;
   background-size: 100% 100%;
   display: inline;
@@ -1830,25 +1830,4 @@ div[data-dimension] {
 @media(max-width:320px ){
 
 	
-}
-
-/*Login Page*/
-.login{
-  margin-top: 70px;
-  margin-left: 50px;
-  display: block;
-}
-.login input{
-  border: 0;
-  border-bottom: 1px solid #aaaaaa;
-  padding: 10px 10px 5px 10px;
-  font-size: 15px;
-}
-.login label{
-  margin-right: 15px;
-}
-.login button{
-  margin: 15px;
-  padding: 7px;
-
 }
