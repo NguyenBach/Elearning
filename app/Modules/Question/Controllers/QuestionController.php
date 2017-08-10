@@ -11,6 +11,7 @@ use Datatables;
 
 class QuestionController extends Controller
 {
+    private $current_detail_id;
     public function __construct(){
 
     }
@@ -46,11 +47,12 @@ class QuestionController extends Controller
     }
 
     public function get_detail($id){
+        $this->current_detail_id = $id;
         $detail = QuestionBank::get_detail($id);
         return view('Question::detail', ['detail' => $detail]);;
     }
 
-    public function create_question(Request $request){
+    public function create_question(Request $request, $id){
         $question = new Question;
         if($request->isMethod('post')){
             $question->fill($request->all());
@@ -58,7 +60,7 @@ class QuestionController extends Controller
 
             return redirect()->back();
         }
-        return redirect()->back();
+        return view('Question::create_question',['id' => $id]);
     }
 
     public function get_datatable(){
@@ -73,5 +75,15 @@ class QuestionController extends Controller
             ->groupBy('question_bank.description', 'question_bank.difficulty','question_bank.id', 'question_bank.name');
 
         return Datatables::of($question_bank)->make(true);
+    }
+
+    public function get_question_datatable($id){
+        $question = QuestionBank::select([
+            'question.id',
+            'question.question',
+            ])->join('question','question_bank.id', 'question.bank_id')
+            ->where('bank_id', $id);
+
+        return Datatables::of($question)->make(true);
     }
 }
