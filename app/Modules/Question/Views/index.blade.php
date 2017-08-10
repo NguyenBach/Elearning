@@ -4,27 +4,28 @@
 @stop
 @section('content')
 <div class="col-md-12">
-<div class="panel panel-primary">
-    <div class="panel-heading">
-        <h3 class="panel-title">Question Banks</h3>
-    </div>
-    <div class="panel-body">
-        <a class="btn btn-large btn-success" href="{{ URL::to('/question/create') }}">Add new</a>
-        <div class="col-md-11 col-md-offset-1">
-            <table class="table table-bordered table-responsive table-hover" id="questions-table">
-               <thead>
-                   <tr>
-                       <th>ID</th>
-                       <th>Question Banks</th>
-                       <th>Description</th>
-                       <th>Difficulty</th>
-                       <th>Actions</th>
-                   </tr>
-               </thead>
-            </table>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Question Banks Management</h3>
+        </div>
+        <div class="panel-body">
+            <a class="btn btn-large btn-success" href="{{ URL::to('/question/create') }}">Add new</a>
+            <div class="col-md-11 col-md-offset-1">
+                <table class="table table-bordered table-responsive table-hover" id="questions-table">
+                   <thead>
+                       <tr>
+                           <th>ID</th>
+                           <th>Question Banks</th>
+                           <th>Description</th>
+                           <th>Difficulty</th>
+                           <th>Total</th>
+                           <th>Actions</th>
+                       </tr>
+                   </thead>
+                </table>
+            </div>
         </div>
     </div>
-</div>
 </div>
 
 @stop

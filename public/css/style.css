@@ -1053,6 +1053,10 @@ div[data-dimension] {
   outline: none;
 }
 
+.answer {
+    background-color: chartreuse;
+}
+
 /*--------------------*/
 /* COURSE SINGLE PAGE */
 /*--------------------*/
@@ -1851,4 +1855,8 @@ div[data-dimension] {
   margin: 15px;
   padding: 7px;
 
+}
+
+body > section{
+  margin-top: 77px;
 }

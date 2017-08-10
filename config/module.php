@@ -11,9 +11,12 @@ return  [
         'Core',
         'Course',
         'Question',
-        'Admin'
+        'Admin',
+        'User',
+        'Dashboard'
     ],
     'activitymodules'=>[
-        'Audio'
+        'Audio',
+        'Text',
     ]
 ];
