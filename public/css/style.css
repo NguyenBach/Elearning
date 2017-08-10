@@ -969,7 +969,7 @@ div[data-dimension] {
 /*--------------------*/
 
 #imgBanner {
-  background-image: url("../img/banner.jpg");
+  background-image: url("img/banner.jpg");
   background-repeat: no-repeat;
   background-size: 100% 100%;
   display: inline;
@@ -1051,10 +1051,6 @@ div[data-dimension] {
 .single_sidebar > ul > li>a:hover,.single_sidebar > ul > li>a:focus{
   text-decoration: none;
   outline: none;
-}
-
-.answer {
-    background-color: chartreuse;
 }
 
 /*--------------------*/
