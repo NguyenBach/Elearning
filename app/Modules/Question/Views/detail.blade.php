@@ -40,7 +40,7 @@
                               @foreach ($detail['questions'] as $question)
                                   <h4 class="singCourse_price">{!!$loop->iteration . '. ' . $question['question'] !!}</h4>
 
-                                  <p class="answer">A. {!! $question['option_0'] !!} </p>
+                                  <p class="">A. {!! $question['option_0'] !!} </p>
                                   <p class="">B. {!! $question['option_1'] !!} </p>
                                   <p class="">C. {!! $question['option_2'] !!} </p>
                                   <p class="">D. {!! $question['option_3'] !!} </p>
