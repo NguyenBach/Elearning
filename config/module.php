@@ -11,6 +11,7 @@ return  [
         'Core',
         'Course',
         'Question',
+        'QuestionSet',
         'Admin'
     ],
     'activitymodules'=>[
