@@ -10,6 +10,7 @@ namespace App\Modules\Course\Controller;
 
 
 use App\Http\Controllers\Controller;
+use App\Modules\Course\Model\CourseTeacher;
 use App\Modules\Course\Model\Lesson;
 use App\Modules\Course\Model\Course;
 use App\Modules\Course\Request\CourseRequest;
@@ -56,20 +57,7 @@ class CourseController extends Controller
 
     }
 
-    public function editCourse(Request $request){
-        $id = $request->input('courseid');
-        if(!isset($id)){
-            $course = new Course();
-            $course->id = $this->course->getLastIndex()+1;
-            return view('Course::form.EditCourse',['course'=>$course]);
-        }else{
-            $course = $this->course->find($id);
-            if(!isset($course->id)) {
-                return view('Core::404');
-            }
-            return view('Course::form.EditCourse',['course'=> $course]);
-        }
-    }
+   
 
     public function showCourse($id)
     {

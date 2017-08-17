@@ -44,7 +44,7 @@ class Course extends Model
         $course->fullname = $data['fullname'];
         $course->shortname = $data['shortname'];
         $course->introduction = $data['intro'];
-        $course->feature_picture = $data['picture'];
+        if($data['picture'] != '') $course->feature_picture = $data['picture'];
         $course->start_date = $data['startdate'];
         $course->course_format = $data['courseformat'];
         $course->number_lessons = $data['numberlessons'];

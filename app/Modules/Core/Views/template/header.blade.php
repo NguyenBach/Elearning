@@ -40,7 +40,7 @@
                         @if(!session('permission') )
                             <li><a href="/login">Login</a></li>
                         @else
-                            <li><a href="/admin">Admin</a></li>
+                            <li><a href="/dashboard">Admin</a></li>
                         @endif
                     </ul>
                 </div><!--/.nav-collapse -->

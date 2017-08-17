@@ -24,7 +24,8 @@ body {
 
     margin: 0px !important;
 
-    font-size:14px !important;    
+    font-size:14px !important;
+    /*overflow: hidden;*/
 
 }
 
@@ -1038,7 +1039,7 @@ ul.sidebar-menu li.active a i {
 
     display: inline-block;
 
-    margin-top: 60px;
+    /*margin-top: 60px;*/
 
     padding: 15px;
 

@@ -11,7 +11,7 @@ Route::group([
     'namespace' => 'App\Modules\Course\Controller'
 ],function (){
     Route::get('/','CourseController@index')->name('index');
-    Route::get('/editcourse','CourseController@editCourse');
+    Route::get('/editcourse/{id}','CourseController@editCourse');
     Route::post('/editcourse','CourseController@newCourse');
     Route::get('/{id}',['uses'=>'CourseController@showCourse','as'=>'courseview']);
     Route::get('/{id}/{lessonid}','LessonController@showLesson')->name('lesson');
