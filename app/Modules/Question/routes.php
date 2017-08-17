@@ -26,6 +26,13 @@ Route::group([
     // Route::post('/create_question','QuestionController@create_question');
 
     Route::get('/detail/{id}/question_datatable','QuestionController@get_question_datatable');
+
     Route::get('/detail/{id}/create','QuestionController@create_question');
     Route::post('/detail/{id}/create','QuestionController@create_question');
+
+    Route::get('/detail/{id}/edit/{qid}','QuestionController@edit_question');
+    Route::post('/detail/{id}/edit/{qid}','QuestionController@edit_question');
+
+    Route::get('/detail/{id}/delete/{qid}','QuestionController@delete_question');
+
 });

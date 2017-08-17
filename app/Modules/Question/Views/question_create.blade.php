@@ -3,16 +3,17 @@
 <div class="col-md-12">
     <div class="panel panel-primary">
         <div class="panel-heading">
+            <a class="panel-title" href="{{ URL::previous() }}">< Back</a>
             <h3 class="panel-title">Question</h3>
         </div>
         <div class="panel-body">
             {!! Form::open(['url' => 'question/detail/{id}/create']) !!}
                 <div class="form-group">
                     {!! Form::label('question', 'Question') !!}
-                    {!! Form::text('question', '', ['class' => 'form-control', 'required' => 'required']) !!}
+                    {!! Form::textarea('question', '', ['class' => 'form-control', 'required' => 'required', 'size' =>'10x3']) !!}
                 </div>
                 <div class="form-group">
-                    {!! Form::label('option_0', 'A') !!}
+                    {!! Form::label('option_0', 'A (default answer)') !!}
                     {!! Form::text('option_0', '', ['class' => 'form-control', 'required' => 'required']) !!}
                 </div>
                 <div class="form-group">
@@ -28,7 +29,6 @@
                     {!! Form::text('option_3', '', ['class' => 'form-control', 'required' => 'required']) !!}
                 </div>
                 <input type='text' value={{$id}} name='bank_id' style="display:none;">
-                <input type='text' value={{$id}} name='answer' style="display:none;">
                 <button class="btn btn-success" type="submit">Add new question</button>
             {!! Form::close() !!}
         </div>

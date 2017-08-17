@@ -1,8 +1,13 @@
 @extends('Core::template.index')
+@section('css')
+    <link href="{{url('js/DataTables-1.10.12/media/css/jquery.dataTables.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{url('css/main.css')}}" />
+@stop
 @section('content')
 <div class="col-md-12">
     <div class="panel panel-primary">
         <div class="panel-heading">
+            <a class="panel-title" href="{{ URL::previous() }}">< Back</a>
             <h3 class="panel-title">{!! $detail['question_bank']['name'] !!} : Detail</h3>
         </div>
         <div class="panel-body">
@@ -18,23 +23,41 @@
                     </div>
 
                     <!-- LIST OF ALL QUESSTIONS  -->
-                    <h3 class="singCourse_title">All Questions : </h3>
-                    <!-- <div class="col-lg-12">
-                        @foreach ($detail['questions'] as $question)
-                            <h4 class="singCourse_price">{!!$loop->iteration . '. ' . $question['question'] !!}</h4>
+                    <h3 class="singCourse_title">All Questions :
+                      <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#show-all">Show all</button>
+                    </h3>
 
-                            <p class="answer">A. {!! $question['option_0'] !!} </p>
-                            <p class="">B. {!! $question['option_1'] !!} </p>
-                            <p class="">C. {!! $question['option_2'] !!} </p>
-                            <p class="">D. {!! $question['option_3'] !!} </p>
-                            <br>
-                        @endforeach
-                    </div> -->
+                    <!-- SHOW ALL MODAL  -->
+
+                    <div class="modal fade" id="show-all" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                      <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">All Questions</h4>
+                          </div>
+                          <div class="modal-body" style="max-height: calc(100vh - 210px);;overflow-y: auto;">
+                              @foreach ($detail['questions'] as $question)
+                                  <h4 class="singCourse_price">{!!$loop->iteration . '. ' . $question['question'] !!}</h4>
+
+                                  <p class="answer">A. {!! $question['option_0'] !!} </p>
+                                  <p class="">B. {!! $question['option_1'] !!} </p>
+                                  <p class="">C. {!! $question['option_2'] !!} </p>
+                                  <p class="">D. {!! $question['option_3'] !!} </p>
+                                  <br>
+                              @endforeach
+                          </div>
+                        </div>
+                      </div>
+                    </div>
 
                 </div>
             </div>
+
+            <!-- QUESTIONS MANAGEMENT  -->
+            <div class="col-md-11">
+                <a class="btn btn-large btn-success" href="{{ URL::to('/question/detail/'.$detail['question_bank']['id'].'/create') }}">Add new</a>
                 <div class="col-md-11 col-md-offset-1">
-                    <a class="btn btn-large btn-success" href="{{ URL::to('/question/detail/'.$detail['question_bank']['id'].'/create') }}">Add new</a>
                     <table class="table table-bordered table-responsive table-hover" id="questions-table">
                        <thead>
                            <tr>
@@ -45,6 +68,7 @@
                        </thead>
                     </table>
                 </div>
+            </div>
         </div>
     </div>
 </div>

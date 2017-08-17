@@ -3,6 +3,7 @@
 <div class="col-md-12">
     <div class="panel panel-primary">
         <div class="panel-heading">
+            <a class="panel-title" href="{{ URL::previous() }}">< Back</a>
             <h3 class="panel-title">Question Banks</h3>
         </div>
         <div class="panel-body">

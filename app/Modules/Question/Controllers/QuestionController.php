@@ -20,6 +20,7 @@ class QuestionController extends Controller
         return view('Question::index');
     }
 
+    // QUESTIONBANK
     public function create(Request $request){
         $question_bank = new QuestionBank;
         if($request->isMethod('post')){
@@ -35,7 +36,7 @@ class QuestionController extends Controller
         $question_bank = QuestionBank::find($id);
         if($request->isMethod('post')){
             $question_bank->update($request->all());
-            return  redirect('question');
+            return redirect('question');
         }
 
         return view('Question::edit', ['question_bank' => $question_bank]);
@@ -52,6 +53,8 @@ class QuestionController extends Controller
         return view('Question::detail', ['detail' => $detail]);;
     }
 
+
+    // QUESTIONS DETAIL
     public function create_question(Request $request, $id){
         $question = new Question;
         if($request->isMethod('post')){
@@ -60,9 +63,31 @@ class QuestionController extends Controller
 
             return redirect()->back();
         }
-        return view('Question::create_question',['id' => $id]);
+        return view('Question::question_create',['id' => $id]);
     }
 
+    public function edit_question(Request $request, $id ,$qid){
+        $question = Question::find($qid);
+        if($request->isMethod('post')){
+            $question->update($request->all());
+            return redirect()->back();
+        }
+
+        return view('Question::question_edit', ['question' => $question]);
+    }
+
+    public function delete_question($id, $qid){
+        Question::destroy($qid);
+        return redirect()->back();
+    }
+
+    public function get_question_detail($id){
+        $this->current_detail_id = $id;
+        $detail = QuestionBank::get_detail($id);
+        return view('Question::question_detail', ['detail' => $detail]);;
+    }
+
+    // DATATABLE API
     public function get_datatable(){
         $question_bank = QuestionBank::select([
             'question_bank.id',
