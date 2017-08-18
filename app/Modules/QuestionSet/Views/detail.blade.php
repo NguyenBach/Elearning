@@ -15,8 +15,14 @@
                 <div class="singCourse_content">
                     <!-- QUESTION BANK INFO  -->
                     <h3 class="singCourse_title">Name : {!! $detail['question_set']['name'] !!}</h3>
+                    <h3 class="singCourse_title">Question Banks :</h3>
+                    <div class="col-lg-12">
+                        @foreach ($detail['questionbanks'] as $questionbank)
+                            <p class="">{!!$loop->iteration . '. ' .  $questionbank['name'] !!} </p>
+                        @endforeach
+                    </div>
                     <h3 class="singCourse_title">Description :</h3>
-                    <div  class="col-lg-12">
+                    <div class="col-lg-12">
                         <p>{!! $detail['question_set']['description'] !!}</p>
                         <br>
                     </div>
