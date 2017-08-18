@@ -1,7 +1,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="{{url('js/queryloader2.min.js')}}" type="text/javascript"></script>
 <script src="{{url('js/wow.min.js')}}"></script>
-<script src="{{url('js/bootstrap.min.js')}}"></script>
+<script src="{{url('node_modules/bootstrap/dist/js/bootstrap.min.js')}}"></script>
 <script src="{{url('js/slick.min.js')}}"></script>
 <script src="{{url('js/jquery.easing.1.3.js')}}"></script>
 <script src="{{url('js/jquery.animate-enhanced.min.js')}}"></script>
