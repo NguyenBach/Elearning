@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
     @include('Core::template.head')
-    <link href="{{url('Dashboard/css/bootstrap-theme.css')}}" rel="stylesheet">
-    <link href="{{url('Dashboard/css/elegant-icons-style.css')}}" rel="stylesheet"/>
-    <link href="{{url('Dashboard/css/style.css')}}" rel="stylesheet">
-    <link href="{{url('Dashboard/css/style-responsive.css')}}" rel="stylesheet"/>
+    <link href="{{url('dashboard-css/css/bootstrap-theme.css')}}" rel="stylesheet">
+    <link href="{{url('dashboard-css/css/elegant-icons-style.css')}}" rel="stylesheet"/>
+    <link href="{{url('dashboard-css/css/style.css')}}" rel="stylesheet">
+    <link href="{{url('dashboard-css/css/style-responsive.css')}}" rel="stylesheet"/>
     @section('css')
     @show
 
@@ -361,13 +361,11 @@
 </section>
 <!--main content end-->
 @section('footer')
-    @include('Core::template.footer')
-
 @show
 @include('Core::template.script')
-<script src="{{url('Dashboard/js/jquery.scrollTo.min.js')}}"></script>
+<script src="{{url('dashboard-css/js/jquery.scrollTo.min.js')}}"></script>
 {{--    <script src="{{url('Dashboard/js/jquery.nicescroll.js')}}" type="text/javascript"></script>--}}
-<script src="{{url('Dashboard/js/scripts.js')}}"></script>
+<script src="{{url('dashboard-css/js/scripts.js')}}"></script>
 @section('script')
 @show
 </body>
