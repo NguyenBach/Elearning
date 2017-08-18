@@ -180,10 +180,19 @@ class DashboardController extends Controller
         $act = $request->input('act');
         $courseId = $request->input('course_id');
         $lessonId = $request->input('lesson_id');
+        $name =  $request->input('name');
+        $description = $request->input('description');
         $act = ActivityType::find($act);
         $view = $act->name.'::form.createForm';
         $course = Course::find($courseId);
         $lesson = Lesson::where('course_id',$courseId)->where('id',$lessonId)->first();
-        return view($view,['course'=>$course,'lesson'=>$lesson,'activity'=>new LessonActivity()]);
+        $activity = new LessonActivity();
+        $activity->course_id = $courseId;
+        $activity->lesson_id = $lessonId;
+        $activity->name = $name;
+        $activity->description = $description;
+        $activity->type_id = $act->id;
+        $activity->save();
+        return route('Text::addForm',['course_id'=>$course->id,'lesson_id'=>$lesson->id,'activity_id'=>$activity->id]);
     }
 }

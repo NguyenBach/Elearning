@@ -1,4 +1,4 @@
-<form action="" enctype="multipart/form-data">
+<form action="{{route('Text::addtext')}}" enctype="multipart/form-data" method="post">
     <h3>New Text</h3>
     <?php if(!isset($activity->activity_instance)){
         $action = 'new';
@@ -19,6 +19,7 @@
     <input type="hidden" name="action" value="{{$action}}">
     <input type="hidden" name="course_id" value="{{$course->id}}">
     <input type="hidden" name="lesson_id" value="{{$lesson->id}}">
+    <input type="hidden" name="activity_id" value="{{$activity->id}}">
     <input type="hidden" name="instance" value="{{$activity->activity_instance}}">
     <label for="">Title:</label> <input type="text" name="title" value="{{$title}}"> <br>
     <label for="">Content:</label> <textarea name="content"  cols="30" rows="10">{{$content}}</textarea> <br>

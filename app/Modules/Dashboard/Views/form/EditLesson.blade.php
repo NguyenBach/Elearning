@@ -84,18 +84,19 @@
     <script>
         $(document).ready(function () {
             $('#addActivityOK').click(function () {
-                var act = $("input[name='activity']").val();
+                var act = $("#activity").val();
                 var courseId = $("input[name='course_id']").val();
                 var lessonId = $("input[name='lesson_id']").val();
+                var name = $("input[name='name']").val();
+                var description = $("textarea[name='description']").val();
                 var html = '';
                 $.ajax({
                     url: '{{route('dashboard::newform')}}',
                     async:false,
                     method: 'post',
-                    data: {'act':act,'course_id':courseId,'lesson_id': lessonId},
+                    data: {'act':act,'course_id':courseId,'lesson_id': lessonId,'name':name,'description':description},
                     success:function (data) {
-                        html += data;
-                        $('#addActivityForm').html(html);
+                       window.location.href=data;
                     },
                     error: function (a, b, c) {
 
