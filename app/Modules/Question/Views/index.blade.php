@@ -11,6 +11,8 @@
         </div>
         <div class="panel-body">
             <a class="btn btn-large btn-success" href="{{ URL::to('/question/create') }}">Add new</a>
+            <a class="btn btn-large btn-warning" href="{{ URL::to('/questionset') }}">Question sets</a>
+            <hr/>
             <div class="col-md-11 col-md-offset-1">
                 <table class="table table-bordered table-responsive table-hover" id="questions-table">
                    <thead>
