@@ -38,7 +38,7 @@
                         </li>
                         <li><a href="contact.html">Contact</a></li>
                         @if(!session('permission') )
-                            <li><a href="/login">Login</a></li>
+                            <li><a href="{{route('thangdeptrai')}}">Login</a></li>
                         @else
                             <li><a href="{{route('dashboard::index')}}">Admin</a></li>
                         @endif

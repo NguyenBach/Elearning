@@ -4,11 +4,11 @@
     <title>Elearning</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/icon" href="{{url('img/wpf-favicon.png')}}"/>
-    <link href="{{url('css/bootstrap.min.css')}}" rel="stylesheet">
-    <link href="{{url('css/font-awesome.min.css')}}" rel="stylesheet">
+    <link href="{{url('node_modules/bootstrap/dist/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{url('node_modules/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
     <link href="{{url('css/superslides.css')}}" rel="stylesheet" >
     <link href="{{url('css/slick.css')}}" rel="stylesheet">
-    <link rel='stylesheet prefetch' href='https://cdn.rawgit.com/pguso/jquery-plugin-circliful/master/css/jquery.circliful.css'>
+    <link rel='stylesheet prefetch' href='{{url('node_modules/jquery-circliful/css/jquery.clirliful.css')}}'>
     <link rel="stylesheet" href="{{url('css/animate.css')}}">
     <link rel="stylesheet" href="{{url('css/queryLoader.css')}}" />
     <link rel="stylesheet" href="{{url('css/jquery.tosrus.all.css')}}" />

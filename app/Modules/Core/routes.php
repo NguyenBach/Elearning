@@ -10,7 +10,7 @@ Route::get('/', function () {
 });
 Route::get('/login',function (){
     return view('Core::login');
-});
+})->name('thangdeptrai');
 Route::post('/login','App\Modules\User\Controller\UserController@login');
 Route::get('/admin',function (){
     return view('Admin::index');
