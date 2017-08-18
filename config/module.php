@@ -11,10 +11,13 @@ return  [
         'Core',
         'Course',
         'Question',
-        'QuestionSet',
-        'Admin'
+        'Admin',
+        'User',
+        'Dashboard',
+        'QuestionSet'
     ],
     'activitymodules'=>[
-        'Audio'
+        'Audio',
+        'Text',
     ]
 ];
