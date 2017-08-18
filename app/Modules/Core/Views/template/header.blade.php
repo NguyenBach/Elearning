@@ -40,7 +40,7 @@
                         @if(!session('permission') )
                             <li><a href="/login">Login</a></li>
                         @else
-                            <li><a href="/dashboard">Admin</a></li>
+                            <li><a href="{{route('dashboard::index')}}">Admin</a></li>
                         @endif
                     </ul>
                 </div><!--/.nav-collapse -->

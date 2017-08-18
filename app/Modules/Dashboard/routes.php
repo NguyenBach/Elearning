@@ -11,7 +11,7 @@ Route::group([
     'prefix' => '/dashboard',
     'namespace' => 'App\Modules\Dashboard\Controller'
 ],function (){
-    Route::get('/','DashboardController@index');
+    Route::get('/','DashboardController@index')->name('index');
     Route::get('/editcourse/{id}','DashboardController@editCourse')->name('edit');
     Route::post('/editcourse/{id}','DashboardController@newCourse')->name('new');
     Route::get('/course/{id}','DashboardController@courseOverview')->name('overview');
