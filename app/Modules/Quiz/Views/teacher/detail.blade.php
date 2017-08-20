@@ -1,16 +1,15 @@
-@extends('Core::template.index')
+@extends('Dashboard::index')
 @section('css')
     <link href="{{url('js/DataTables-1.10.12/media/css/jquery.dataTables.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{url('css/main.css')}}" />
 @stop
-@section('content')
+@section('mainContent')
 <div class="col-md-12">
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-            <a class="panel-title" href="{{ URL::previous() }}">< Back</a>
-            <h3 class="panel-title">{!! $detail['question_set']['name'] !!} : Detail</h3>
-        </div>
+    <div class="panel">
         <div class="panel-body">
+            <div class="page-header">
+              <h2><b>Question Set Detail</b></h2>
+            </div>
             <div class="col-lg-6 col-md-6 col-sm-6">
                 <div class="singCourse_content">
                     <!-- QUESTION BANK INFO  -->
@@ -64,17 +63,6 @@
 
 
 
-@stop
-@section('slider')
-   <section id="imgBanner">
-       <h2>Add Question Banks</h2>
-   </section>
-
-
-@stop
-
-@section('sidebar')
-@include('Core::template.sidebar')
 @stop
 @section('script')
 <script type="text/javascript" src="{{ URL::asset('js/DataTables-1.10.12/media/js/jquery.dataTables.js') }}"></script>

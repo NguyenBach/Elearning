@@ -1,12 +1,11 @@
-@extends('Core::template.index')
-@section('content')
+@extends('Dashboard::index')
+@section('mainContent')
 <div class="col-md-12">
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-            <a class="panel-title" href="{{ URL::previous() }}">< Back</a>
-            <h3 class="panel-title">Question Sets</h3>
-        </div>
+    <div class="panel">
         <div class="panel-body">
+            <div class="page-header">
+              <h2><b>Create Question Set</b></h2>
+            </div>
             {!! Form::open(['url' => 'questionset/generate']) !!}
                 <div class="form-group">
                     {!! Form::label('name', 'Name') !!}
@@ -41,15 +40,4 @@
 
 
 
-@stop
-@section('slider')
-   <section id="imgBanner">
-       <h2>Generate Question Sets</h2>
-   </section>
-
-
-@stop
-
-@section('sidebar')
-@include('Core::template.sidebar')
 @stop

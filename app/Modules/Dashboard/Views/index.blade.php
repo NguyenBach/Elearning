@@ -350,6 +350,17 @@
                 </ul>
             </li>
 
+            <li class="sub-menu">
+                <a href="javascript:;" class="">
+                    <i class="icon_table"></i>
+                    <span>Question Sets</span>
+                    <span class="menu-arrow arrow_carrot-right"></span>
+                </a>
+                <ul class="sub">
+                    <li><a class="active" href="{{ URL::to('teacher/quiz')}}">List</a></li>
+                </ul>
+            </li>
+
         </ul>
         <!-- sidebar menu end-->
     </div>
@@ -364,7 +375,7 @@
 @show
 @include('Core::template.script')
 <script src="{{url('dashboard-css/js/jquery.scrollTo.min.js')}}"></script>
-{{--    <script src="{{url('Dashboard/js/jquery.nicescroll.js')}}" type="text/javascript"></script>--}}
+ <script src="{{url('dashboard-css/js/jquery.nicescroll.js')}}" type="text/javascript"></script>
 <script src="{{url('dashboard-css/js/scripts.js')}}"></script>
 @section('script')
 @show

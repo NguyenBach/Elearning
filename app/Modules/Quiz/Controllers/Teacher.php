@@ -1,24 +1,24 @@
 <?php
-namespace App\Modules\QuestionSet\Controllers;
+namespace App\Modules\Quiz\Controllers;
 
 
 use App\Http\Controllers\Controller;
-use App\Modules\QuestionSet\Models\QuestionSet;
-use App\Modules\QuestionSet\Models\QuestionSetMap;
-use App\Modules\QuestionSet\Models\QuestionBank;
-use App\Modules\QuestionSet\Models\Question;
+use App\Modules\Quiz\Models\QuestionSet;
+use App\Modules\Quiz\Models\QuestionSetMap;
+use App\Modules\Quiz\Models\QuestionBank;
+use App\Modules\Quiz\Models\Question;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Datatables;
 
-class QuestionSetController extends Controller
+class Teacher extends Controller
 {
     public function __construct(){
 
     }
 
     public function index (){
-        return view('QuestionSet::index');
+        return view('Quiz::teacher/index');
     }
 
     // QUESTIONSET
@@ -37,7 +37,7 @@ class QuestionSetController extends Controller
         }
 
         $question_banks = QuestionBank::pluck('name', 'id');
-        return view('QuestionSet::create', ['question_banks' => $question_banks]);
+        return view('Quiz::teacher/create', ['question_banks' => $question_banks]);
     }
 
     public function generate_question_set($set_id, $bank_ids, $question_per_bank){
@@ -58,13 +58,13 @@ class QuestionSetController extends Controller
 
     public function delete($id){
         QuestionSet::destroy($id);
-        return redirect('questionset');
+        return redirect('quiz');
     }
 
     public function get_detail($id){
         $this->current_detail_id = $id;
         $detail = QuestionSet::get_detail($id);
-        return view('QuestionSet::detail', ['detail' => $detail]);;
+        return view('Quiz::teacher/detail', ['detail' => $detail]);;
     }
 
 

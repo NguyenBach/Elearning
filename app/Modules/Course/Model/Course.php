@@ -66,7 +66,7 @@ class Course extends Model
 
     public function getAllActiveCourse()
     {
-        return $this->where('active', 1)->where('visiblea', 1)->get();
+        return $this->where('active', 1)->where('visible', 1)->get();
     }
 
     public function get10FirstCourse()

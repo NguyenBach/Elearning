@@ -1,10 +1,9 @@
-@extends('Core::template.index')
-@section('content')
+@extends('Dashboard::index')
+@section('mainContent')
 <div class="col-md-12">
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-            <a class="panel-title" href="{{ URL::previous() }}">< Back</a>
-            <h3 class="panel-title">Question Banks</h3>
+    <div class="panel">
+        <div class="page-header">
+          <h2><b>Edit Question Set</b></h2>
         </div>
         <div class="panel-body">
             {!! Form::model($question_bank, ['url' => ['question/edit', $question_bank->id]]) !!}
@@ -26,15 +25,4 @@
     </div>
 </div>
 
-@stop
-@section('slider')
-   <section id="imgBanner">
-       <h2>Add Question Banks</h2>
-   </section>
-
-
-@stop
-
-@section('sidebar')
-@include('Core::template.sidebar')
 @stop

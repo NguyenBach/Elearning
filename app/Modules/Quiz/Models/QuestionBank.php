@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\QuestionSet\Models;
+namespace App\Modules\Quiz\Models;
 
 
 use Illuminate\Database\Eloquent\Model;

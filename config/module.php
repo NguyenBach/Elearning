@@ -14,7 +14,7 @@ return  [
         'Admin',
         'User',
         'Dashboard',
-        'QuestionSet'
+        'Quiz'
     ],
     'activitymodules'=>[
         'Audio',

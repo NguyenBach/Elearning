@@ -1,17 +1,15 @@
-@extends('Core::template.index')
+@extends('Dashboard::index')
 @section('css')
     <link href="{{url('js/DataTables-1.10.12/media/css/jquery.dataTables.css')}}" rel="stylesheet">
 @stop
-@section('content')
+@section('mainContent')
 <div class="col-md-12">
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-            <a class="panel-title" href="{{ URL::previous() }}">< Back</a>
-            <h3 class="panel-title">Question Sets Management</h3>
-        </div>
+    <div class="panel">
         <div class="panel-body">
-            <a class="btn btn-large btn-success" href="{{ URL::to('/questionset/generate') }}">Generate set</a>
-            <div class="col-md-11 col-md-offset-1">
+            <div class="page-header">
+              <h2><b>Question Sets List</b></h2>
+            </div>
+            <div class="col-md-12">
                 <table class="table table-bordered table-responsive table-hover" id="question-sets-table">
                    <thead>
                        <tr>
@@ -28,17 +26,6 @@
     </div>
 </div>
 
-@stop
-@section('slider')
-    <section id="imgBanner">
-        <h2>Question Banks</h2>
-    </section>
-
-
-@stop
-
-@section('sidebar')
-@include('Core::template.sidebar')
 @stop
 @section('script')
 <script type="text/javascript" src="{{ URL::asset('js/DataTables-1.10.12/media/js/jquery.dataTables.js') }}"></script>
