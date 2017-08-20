@@ -4,9 +4,9 @@
     <div class="panel">
         <div class="panel-body">
             <div class="page-header">
-              <h2><b>Create Question Set</b></h2>
+              <h2><b>Create Quiz</b></h2>
             </div>
-            {!! Form::open(['url' => 'questionset/generate']) !!}
+            {!! Form::open(['url' => 'teacher/quiz/generate']) !!}
                 <div class="form-group">
                     {!! Form::label('name', 'Name') !!}
                     {!! Form::text('name', '', ['class' => 'form-control', 'required' => 'required']) !!}

@@ -7,10 +7,10 @@
     <div class="panel">
         <div class="panel-body">
             <div class="page-header">
-              <h2><b>Question Sets List</b></h2>
+              <h2><b>Quiz List</b></h2>
             </div>
             <div class="col-md-12">
-                <table class="table table-bordered table-responsive table-hover" id="question-sets-table">
+                <table class="table table-bordered table-responsive table-hover" id="quiz-table">
                    <thead>
                        <tr>
                            <th>ID</th>
@@ -29,5 +29,5 @@
 @stop
 @section('script')
 <script type="text/javascript" src="{{ URL::asset('js/DataTables-1.10.12/media/js/jquery.dataTables.js') }}"></script>
-<script type="text/javascript" src="{{ URL::asset('js/scripts/list_question_set.datatables.js') }}"></script>
+<script type="text/javascript" src="{{ URL::asset('js/scripts/quiz.datatables.js') }}"></script>
 @stop

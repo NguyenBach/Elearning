@@ -8,12 +8,12 @@
     <div class="panel">
         <div class="panel-body">
             <div class="page-header">
-              <h2><b>Question Set Detail</b></h2>
+              <h2><b>Quiz Detail</b></h2>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6">
                 <div class="singCourse_content">
                     <!-- QUESTION BANK INFO  -->
-                    <h3 class="singCourse_title">Name : {!! $detail['question_set']['name'] !!}</h3>
+                    <h3 class="singCourse_title">Name : {!! $detail['quiz']['name'] !!}</h3>
                     <h3 class="singCourse_title">Question Banks :</h3>
                     <div class="col-lg-12">
                         @foreach ($detail['questionbanks'] as $questionbank)
@@ -22,7 +22,7 @@
                     </div>
                     <h3 class="singCourse_title">Description :</h3>
                     <div class="col-lg-12">
-                        <p>{!! $detail['question_set']['description'] !!}</p>
+                        <p>{!! $detail['quiz']['description'] !!}</p>
                         <br>
                     </div>
 
@@ -34,7 +34,7 @@
                     <!-- SHOW ALL MODAL  -->
 
                     <div class="modal fade" id="show-all" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                      <div class="modal-dialog modal-lg" role="document">
+                      <div class="modal-lg" role="document">
                         <div class="modal-content">
                           <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>

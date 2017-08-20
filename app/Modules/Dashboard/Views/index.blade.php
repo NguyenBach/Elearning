@@ -352,12 +352,13 @@
 
             <li class="sub-menu">
                 <a href="javascript:;" class="">
-                    <i class="icon_table"></i>
-                    <span>Question Sets</span>
+                    <i class="icon_documents"></i>
+                    <span>Quiz</span>
                     <span class="menu-arrow arrow_carrot-right"></span>
                 </a>
                 <ul class="sub">
                     <li><a class="active" href="{{ URL::to('teacher/quiz')}}">List</a></li>
+                    <li><a class="active" href="{{ URL::to('teacher/quiz/generate')}}">Create</a></li>
                 </ul>
             </li>
 

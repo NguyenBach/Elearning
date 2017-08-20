@@ -5,29 +5,29 @@ namespace App\Modules\Quiz\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class QuestionSet extends Model
+class Quiz extends Model
 {
-    protected $table = 'question_sets';
+    protected $table = 'quizzes';
     protected $fillable = ['name', 'description'];
 
     public function get_questions(){
-       return $this->belongsToMany('App\Modules\QuestionSet\Models\Question', 'question_set_maps', 'set_id', 'question_id')->get();
+       return $this->belongsToMany('App\Modules\Quiz\Models\Question', 'question_quiz_maps', 'quiz_id', 'question_id')->get();
     }
 
     public function get_questionbanks(){
-       return $this->belongsToMany('App\Modules\QuestionSet\Models\QuestionBank', 'question_set_maps', 'set_id', 'bank_id')
+       return $this->belongsToMany('App\Modules\Quiz\Models\QuestionBank', 'question_quiz_maps', 'quiz_id', 'bank_id')
                    ->distinct()->get();
     }
 
     public static function get_detail($id){
-        $query         = QuestionSet::find($id);
+        $query         = Quiz::find($id);
         if($query){
             $question_set  = $query;
             $questions     = $query->get_questions();
             $question_banks= $query->get_questionbanks();
 
             $data = array(
-                'question_set' => $question_set,
+                'quiz' => $question_set,
                 'questionbanks'=> $question_banks,
                 'questions'    => $questions
             );

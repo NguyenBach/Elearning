@@ -3,10 +3,10 @@
 <div class="col-md-12">
     <div class="panel">
         <div class="page-header">
-          <h2><b>Edit Question Set</b></h2>
+          <h2><b>Edit Quiz</b></h2>
         </div>
         <div class="panel-body">
-            {!! Form::model($question_bank, ['url' => ['question/edit', $question_bank->id]]) !!}
+            {!! Form::model($quiz, ['url' => ['teacher/quiz/edit', $quiz->id]]) !!}
                 <div class="form-group">
                     {!! Form::label('name', 'Name') !!}
                     {!! Form::text('name', null, ['class' => 'form-control', 'required' => 'required']) !!}

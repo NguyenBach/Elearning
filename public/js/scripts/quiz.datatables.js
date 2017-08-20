@@ -1,18 +1,18 @@
-function deleteQuestionSet(id) {
+function deleteQuiz(id) {
     if (confirm('Are you sure to delete this item?')) {
         window.location.href = window.location.pathname + '/delete/' + id;
     }
 }
 
 jQuery(document).ready(function() {
-    $('#question-sets-table').DataTable({
+    $('#quiz-table').DataTable({
         processing: true,
         serverSide: true,
         ajax: window.location.pathname + '/datatable',
         columns: [
-            { data: 'id', name: 'question_sets.id' },
-            { data: 'name', name: 'question_sets.name' },
-            { data: 'description', name: 'question_sets.description' },
+            { data: 'id', name: 'quizzes.id' },
+            { data: 'name', name: 'quizzes.name' },
+            { data: 'description', name: 'quizzes.description' },
             { data: 'total', name: 'total', searchable: false },
             { data: null, name: null },
         ],
@@ -27,8 +27,8 @@ jQuery(document).ready(function() {
         ],
         createdRow : function (row, data, index) {
             // Action Column
-            var detailBtn   = '<a class="btn btn-sm btn-info" href="' + window.location.pathname + '/detail/' + data.id + '">Detail</a>';
-            var deleteBtn = '<a class="btn btn-sm btn-danger" onclick="deleteQuestionSet(' + data.id + ')">Delete</a>';
+            var detailBtn = '<a class="btn btn-sm btn-info" href="' + window.location.pathname + '/detail/' + data.id + '">Detail</a>';
+            var deleteBtn = '<a class="btn btn-sm btn-danger" onclick="deleteQuiz(' + data.id + ')">Delete</a>';
             var space     = '<span> </span>';
             var actionCol = detailBtn + space + deleteBtn;
             $('td', row).eq(-1).html(actionCol).css('min-width', '180px');
