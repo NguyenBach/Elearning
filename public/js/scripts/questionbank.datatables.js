@@ -5,7 +5,7 @@ function deleteQuestionBank(id) {
 }
 
 jQuery(document).ready(function() {
-    $('#questions-table').DataTable({
+    $('#questionbank-table').DataTable({
         processing: true,
         serverSide: true,
         ajax: window.location.pathname + '/datatable',

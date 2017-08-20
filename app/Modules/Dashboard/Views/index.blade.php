@@ -362,6 +362,18 @@
                 </ul>
             </li>
 
+            <li class="sub-menu">
+                <a href="javascript:;" class="">
+                    <i class="icon_documents"></i>
+                    <span>Question Banks</span>
+                    <span class="menu-arrow arrow_carrot-right"></span>
+                </a>
+                <ul class="sub">
+                    <li><a class="active" href="{{ URL::to('teacher/questionbank')}}">List</a></li>
+                    <li><a class="active" href="{{ URL::to('teacher/questionbank/create')}}">Create</a></li>
+                </ul>
+            </li>
+
         </ul>
         <!-- sidebar menu end-->
     </div>

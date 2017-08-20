@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Question\Models;
+namespace App\Modules\QuestionBank\Models;
 
 
 use Illuminate\Database\Eloquent\Model;
@@ -11,7 +11,7 @@ class QuestionBank extends Model
     protected $fillable = ['name', 'description', 'difficulty'];
 
     public function get_questions(){
-       return $this->hasMany('App\Modules\Question\Models\Question', 'bank_id')->get();
+       return $this->hasMany('App\Modules\QuestionBank\Models\Question', 'bank_id')->get();
     }
 
     public static function get_detail($id){

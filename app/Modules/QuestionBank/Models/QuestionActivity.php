@@ -6,7 +6,7 @@
  * Time: 21:59
  */
 
-namespace App\Modules\Question\Models;
+namespace App\Modules\QuestionBank\Models;
 
 
 use Illuminate\Database\Eloquent\Model;

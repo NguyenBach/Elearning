@@ -1,10 +1,10 @@
 <?php
-namespace App\Modules\Question\Controllers;
+namespace App\Modules\QuestionBank\Controllers;
 
 
 use App\Http\Controllers\Controller;
-use App\Modules\Question\Models\QuestionBank;
-use App\Modules\Question\Models\Question;
+use App\Modules\QuestionBank\Models\QuestionBank;
+use App\Modules\QuestionBank\Models\Question;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Datatables;
@@ -17,7 +17,7 @@ class QuestionController extends Controller
     }
 
     public function index (){
-        return view('Question::index');
+        return view('QuestionBank::index');
     }
 
     // QUESTIONBANK
@@ -29,7 +29,7 @@ class QuestionController extends Controller
 
             return redirect('question');
         }
-        return view('Question::create', ['question_bank' => $question_bank]);
+        return view('QuestionBank::create', ['question_bank' => $question_bank]);
     }
 
     public function edit(Request $request, $id){
@@ -39,7 +39,7 @@ class QuestionController extends Controller
             return redirect('question');
         }
 
-        return view('Question::edit', ['question_bank' => $question_bank]);
+        return view('QuestionBank::edit', ['question_bank' => $question_bank]);
     }
 
     public function delete($id){
@@ -50,7 +50,7 @@ class QuestionController extends Controller
     public function get_detail($id){
         $this->current_detail_id = $id;
         $detail = QuestionBank::get_detail($id);
-        return view('Question::detail', ['detail' => $detail]);;
+        return view('QuestionBank::detail', ['detail' => $detail]);;
     }
 
 
@@ -63,7 +63,7 @@ class QuestionController extends Controller
 
             return redirect()->back();
         }
-        return view('Question::question_create',['id' => $id]);
+        return view('QuestionBank::question_create',['id' => $id]);
     }
 
     public function edit_question(Request $request, $id ,$qid){
@@ -73,7 +73,7 @@ class QuestionController extends Controller
             return redirect()->back();
         }
 
-        return view('Question::question_edit', ['question' => $question]);
+        return view('QuestionBank::question_edit', ['question' => $question]);
     }
 
     public function delete_question($id, $qid){
@@ -84,7 +84,7 @@ class QuestionController extends Controller
     public function get_question_detail($id){
         $this->current_detail_id = $id;
         $detail = QuestionBank::get_detail($id);
-        return view('Question::question_detail', ['detail' => $detail]);;
+        return view('QuestionBank::question_detail', ['detail' => $detail]);;
     }
 
     // DATATABLE API
