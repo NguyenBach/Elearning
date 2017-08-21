@@ -388,7 +388,7 @@
 @show
 @include('Core::template.script')
 <script src="{{url('dashboard-css/js/jquery.scrollTo.min.js')}}"></script>
- <script src="{{url('dashboard-css/js/jquery.nicescroll.js')}}" type="text/javascript"></script>
+<script src="{{url('dashboard-css/js/jquery.nicescroll.js')}}" type="text/javascript"></script>
 <script src="{{url('dashboard-css/js/scripts.js')}}"></script>
 @section('script')
 @show
