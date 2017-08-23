@@ -48,7 +48,7 @@ class TextController extends Controller
             $text = TextContent::find($instance);
             $this->save($courseId,$lessonId,$title,$content,$text);
         }
-        return redirect()->route('dashboard::editlesson',['id'=>$courseId,'lesson'=>$lessonId]);
+        return redirect()->route('course::editlesson',['id'=>$courseId,'lesson'=>$lessonId]);
 
     }
 

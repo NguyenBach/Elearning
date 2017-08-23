@@ -1,4 +1,4 @@
-@extends('Dashboard::index')
+@extends("Dashboard::index")
 @section('mainContent')
     <section class="wrapper">
         <div class="row">
@@ -14,8 +14,9 @@
             <div class="col-lg-12">
                 <section class="panel">
                     <header class="panel-heading">
-                        Danh sách course của bạn
+                        Danh sách course của bạn <a class="btn btn-primary" href="{{route('course::edit',['id'=>0])}}"><span class="fa fa-plus"></span></a>
                     </header>
+
                     <table class="table">
                         <tbody>
                         <tr>
@@ -28,7 +29,7 @@
                             </th>
                         </tr>
                         @foreach($courses as $key => $course)
-                            <tr onclick="window.location.href='/dashboard/course/{{$course[0]['id']}}'">
+                            <tr onclick="window.location.href='{{route('course::overview',['id'=>$course[0]['id']])}}'">
                                 <td>{{$key}}</td>
                                 <td>{{$course[0]['fullname']}}</td>
                                 <td>{{$course[0]['created_at']}}</td>
@@ -37,7 +38,10 @@
                                         <a class="btn btn-primary"
                                            href="{{route('course::edit',['id'=>$course[0]['id']])}}">Edit</a>
                                         <a href="{{route('course::courseview',['id'=>$course[0]['id']])}}"
-                                           class="btn btn-danger">View</a>
+                                           class="btn btn-info">View</a>
+                                        <a href="{{route('course::courseview',['id'=>$course[0]['id']])}}"
+                                                                           class="btn btn-danger">Delete</a>
+
                                     </div>
                                 </td>
                             </tr>

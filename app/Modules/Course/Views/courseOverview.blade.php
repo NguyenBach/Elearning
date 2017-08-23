@@ -18,6 +18,8 @@
         <div class="single_course_content">
             <h2>About The Coures</h2>
             <p>{{$course->introduction}}</p>
+
+            <a href="#" class="btn btn-primary">Add Lesson</a>
             <table class="table table-striped course_table">
                 <thead>
                 <tr>
@@ -32,7 +34,7 @@
                         <td><a href="{{route('course::lesson',['id'=>$course->id,'lessonid'=>$lesson->id])}}">{{$lesson->title}}</a></td>
                         <td>Dr. Steve Palmer</td>
                         <td><div class="btn-group">
-                                <a class="btn btn-primary" href="{{route('dashboard::editlesson',['id'=>$course->id,'lesson'=>$lesson->id])}}">Edit</a>
+                                <a class="btn btn-primary" href="{{route('course::editlesson',['id'=>$course->id,'lesson'=>$lesson->id])}}">Edit</a>
                                 <a href="#"
                                    class="btn btn-danger">Delete</a>
                             </div></td>
