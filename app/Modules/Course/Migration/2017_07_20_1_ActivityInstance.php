@@ -21,6 +21,7 @@ class ActivityInstance extends Migration
     {
         Schema::create('lesson_activity', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('course_id');
             $table->integer('lesson_id');
             $table->string('name');
             $table->mediumText('description');

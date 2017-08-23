@@ -10,10 +10,11 @@ return  [
     'modules' => [
         'Core',
         'Course',
-        'Question',
+        'QuestionBank',
         'Admin',
         'User',
-        'Dashboard'
+        'Dashboard',
+        'Quiz'
     ],
     'activitymodules'=>[
         'Audio',
