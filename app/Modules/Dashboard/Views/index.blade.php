@@ -6,6 +6,7 @@
     <link href="{{url('dashboard-css/css/elegant-icons-style.css')}}" rel="stylesheet"/>
     <link href="{{url('dashboard-css/css/style.css')}}" rel="stylesheet">
     <link href="{{url('dashboard-css/css/style-responsive.css')}}" rel="stylesheet"/>
+    <link rel="stylesheet" href="{{url('dashboard-css/css/dashboard.css')}}">
     @section('css')
     @show
 

@@ -21,7 +21,7 @@
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul id="top-menu" class="nav navbar-nav navbar-right main-nav">
-                        <li class="active"><a href="/">Home</a></li>
+                        <li class="active"><a href="{{route('index')}}">Home</a></li>
                         <li><a href="{{route('course::index')}}">Course</a></li>
                         @if(!session('permission') )
                             <li><a href="{{route('thangdeptrai')}}">Login</a></li>
@@ -34,4 +34,5 @@
         </nav>
     </div>
     <!-- END MENU -->
+    <div class="clear"></div>
 </header>

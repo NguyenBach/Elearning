@@ -1,8 +1,32 @@
+header#header {
+  margin-bottom: 100px;
+}
 section#lesson {
   height: 100px;
-  margin-top: 140px;
 }
 section#lesson .lesson-content .tab-content {
   margin-top: 20px;
   margin-bottom: 20px;
+}
+section#register,
+section#login {
+  text-align: center;
+  margin-bottom: 30px;
+}
+section#register form,
+section#login form {
+  text-align: left;
+  width: 50%;
+  margin: 0 auto;
+}
+section#register form .btn-main,
+section#login form .btn-main {
+  text-align: center;
+}
+section#register form .btn-main button,
+section#login form .btn-main button {
+  display: inline-block;
+  min-width: 100px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }

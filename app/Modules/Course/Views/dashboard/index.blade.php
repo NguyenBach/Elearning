@@ -14,7 +14,7 @@
             <div class="col-lg-12">
                 <section class="panel">
                     <header class="panel-heading">
-                        Danh sách course của bạn <a class="btn btn-primary" href="{{route('course::edit',['id'=>0])}}"><span class="fa fa-plus"></span></a>
+                        Danh sách course của bạn
                     </header>
 
                     <table class="table">
@@ -54,4 +54,5 @@
             </div>
         </div>
     </section>
+    <a id="them-course" class="btn btn-primary" href="{{route('course::edit',['id'=>0])}}"><span class="fa fa-plus"></span></a>
 @stop
