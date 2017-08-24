@@ -23,7 +23,7 @@
                 </div>
             </div>
             <div class="">
-              <a class="btn btn-lg btn-danger pull-right" href="{{ URL::to('')}}">Start !</a>
+              <a class="btn btn-lg btn-danger pull-right" href="{{ URL::to(url()->current().'/doing')}}">Start !</a>
             </div>
           </div>
         </div>
