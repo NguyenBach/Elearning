@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Quiz extends Migration
+class QuestionQuizMap extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class Quiz extends Migration
      */
     public function up()
     {
-        Schema::create('quizzes', function (Blueprint $table) {
+        Schema::create('question_quiz_maps', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('description');
+            $table->integer('quiz_id');
+            $table->integer('question_id');
+            $table->integer('bank_id');
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ class Quiz extends Migration
      */
     public function down()
     {
-        Schema::drop('quizzes');
+        Schema::drop('question_quiz_maps');
     }
 }

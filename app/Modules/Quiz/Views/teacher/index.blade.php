@@ -14,7 +14,7 @@
                    <thead>
                        <tr>
                            <th>ID</th>
-                           <th>Question Sets</th>
+                           <th>Quiz Name</th>
                            <th>Description</th>
                            <th>Total</th>
                            <th>Actions</th>
