@@ -17,3 +17,6 @@ a#them-course:hover {
 section#main-content {
   margin-top: 62px;
 }
+.modal-dialog {
+  left: 0 !important;
+}

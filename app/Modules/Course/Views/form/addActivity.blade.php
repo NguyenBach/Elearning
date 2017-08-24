@@ -2,20 +2,26 @@
     <h3>Add Activity</h3>
     <input type="hidden" value="{{$course->id}}" name="course_id">
     <input type="hidden" value="{{$lesson->id}}" name="lesson_id">
-    <label for="">Name: </label><input type="text" name="name"><br>
-    <label for="">Description: </label>
-    <textarea name="description"  cols="30" rows="10"></textarea><br>
+<div class="form-group">
+    <label for="">Name: </label>
+    <input class="form-control" type="text" name="name">
+</div>
+    <div class="form-group">
+        <label for="">Description: </label>
+        <textarea name="description" class="form-control"  cols="30" rows="10"></textarea>
+    </div>
+<div class="form-group">
     <label for="">Select Activity:</label>
-    <select name="activity" id="activity" >
+    <select name="activity" id="activity" class="form-control">
         <?php
         $acts = \App\Modules\Course\ActivityType::all();
         ?>
         @foreach($acts as $act)
-                <option value="{{$act->id}}">{{$act->name}}</option> <br>
+            <option value="{{$act->id}}">{{$act->name}}</option> <br>
         @endforeach
 
     </select>
-
-    <button type="submit">OK</button>
-    <button type="button">Cancel</button>
+</div>
+    <button type="submit" class="btn btn-success">OK</button>
+    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
 </form>
