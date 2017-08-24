@@ -60,4 +60,9 @@ class ActivityController extends Controller
         $route = $act->name . '::addForm';
         return redirect()->route($route,['course_id'=>$course->id,'lesson_id'=>$lesson->id,'activity_id'=>$activity->id]);
     }
+
+    public function dashboard_index(){
+        $acts = ActivityType::all();
+        return view('Course::dashboard.activity',['activities' => $acts]);
+    }
 }
