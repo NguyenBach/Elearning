@@ -15,5 +15,9 @@
     "jquery": "^3.2.1",
     "jquery-circliful": "^0.1.1",
     "pdfobject": "^2.0.201604172"
+  },
+  "devDependencies": {
+    "pdfjs-dist": "^1.9.462",
+    "video.js": "^6.2.5"
   }
 }

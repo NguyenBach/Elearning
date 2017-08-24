@@ -294,6 +294,13 @@
                 </a>
             </li>
 
+            <li class="">
+                <a class="" href="{{route('ActivityDashboard::index')}}">
+                    <i class="icon_house_alt"></i>
+                    <span>Activity</span>
+                </a>
+            </li>
+
             <li class="sub-menu">
                 <a href="javascript:;" class="">
                     <i class="icon_documents"></i>

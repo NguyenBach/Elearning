@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="{{url('css/jquery.tosrus.all.css')}}" />
     <link id="switcher" href="{{url('css/themes/default-theme.css')}}" rel="stylesheet">
     <link href="{{url('css/style.css')}}" rel="stylesheet">
+    <link href="{{url('node_modules/video.js/dist/video-js.css')}}" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Varela' rel='stylesheet' type='text/css'>
     <!--[if lt IE 9]>
