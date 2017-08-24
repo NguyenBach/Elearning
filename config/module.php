@@ -19,5 +19,7 @@ return  [
     'activitymodules'=>[
         'Audio',
         'Text',
+        'Video',
+        'PDF'
     ]
 ];

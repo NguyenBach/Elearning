@@ -1,0 +1,19 @@
+a#them-course {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  -webkit-transition: 0.5s;
+  /* Safari */
+  transition: 0.5s;
+}
+a#them-course:hover {
+  font-size: 50px;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+}
+section#main-content {
+  margin-top: 62px;
+}

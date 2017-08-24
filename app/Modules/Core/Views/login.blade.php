@@ -1,14 +1,23 @@
 @extends('Core::template.index')
 @section('content')
-    <div class="login">
-        <form  action="" method="post" enctype="multipart/form-data">
-            <h2>Login</h2>
-            <label for="">UserName: </label><input type="text" name="username" placeholder="User Name"><br>
-            <label for="">Password: </label><input type="password" name="password" placeholder="Password"><br>
-            <button type="submit">Login</button>
-            <button type="button" onclick="cancel()">Cancel</button>
-        </form>
-    </div>
+    <section id="login">
+        <div class="container">
+            <form  action="" method="post" enctype="multipart/form-data">
+                <h2>Login</h2>
+                <div class="form-group">
+                    <label for="">UserName: </label><input type="text" name="username" placeholder="User Name" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="">Password: </label><input type="password" name="password" placeholder="Password" class="form-control">
+                </div>
+                <div class="btn-main">
+                    <button type="submit" class="btn btn-success">Login</button>
+                    <button type="button" onclick="cancel()" class="btn btn-danger">Cancel</button>
+                </div>
+
+            </form>
+        </div>
+    </section>
 
     <script>
         function cancel() {

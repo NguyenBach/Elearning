@@ -9,3 +9,5 @@
 <script src='https://cdn.rawgit.com/pguso/jquery-plugin-circliful/master/js/jquery.circliful.min.js'></script>
 <script type="text/javascript" language="javascript" src="{{url('js/jquery.tosrus.min.all.js')}}"></script>
 <script src="{{url('js/custom.js')}}"></script>
+<script src="{{url('node_modules/video.js/dist/video.js')}}"></script>
+

@@ -11,6 +11,10 @@ namespace App\Modules\Course\Controller;
 
 use App\Http\Controllers\Controller;
 use App\Modules\Course\ActivityType;
+use App\Modules\Course\Model\Course;
+use App\Modules\Course\Model\Lesson;
+use App\Modules\Course\Model\LessonActivity;
+use Illuminate\Http\Request;
 
 class ActivityController extends Controller
 {
@@ -34,5 +38,31 @@ class ActivityController extends Controller
             $a[] = $b;
         }
         return response()->json($a);
+    }
+
+    public function newActivityForm(Request $request){
+        $act = $request->input('activity');
+        $courseId = $request->input('course_id');
+        $lessonId = $request->input('lesson_id');
+        $name =  $request->input('name');
+        $description = $request->input('description');
+        $act = ActivityType::find($act);
+        $view = $act->name.'::form.createForm';
+        $course = Course::find($courseId);
+        $lesson = Lesson::where('course_id',$courseId)->where('id',$lessonId)->first();
+        $activity = new LessonActivity();
+        $activity->course_id = $courseId;
+        $activity->lesson_id = $lessonId;
+        $activity->name = $name;
+        $activity->description = $description;
+        $activity->type_id = $act->id;
+        $activity->save();
+        $route = $act->name . '::addForm';
+        return redirect()->route($route,['course_id'=>$course->id,'lesson_id'=>$lesson->id,'activity_id'=>$activity->id]);
+    }
+
+    public function dashboard_index(){
+        $acts = ActivityType::all();
+        return view('Course::dashboard.activity',['activities' => $acts]);
     }
 }

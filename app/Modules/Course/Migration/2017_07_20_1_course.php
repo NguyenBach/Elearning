@@ -29,7 +29,7 @@ class Course extends Migration
             $table->string('course_format');
             $table->integer('number_lessions');
             $table->boolean('active');
-            $table->boolean('visible');
+            $table->boolean('visiblea');
             $table->timestamps();
         });
     }
