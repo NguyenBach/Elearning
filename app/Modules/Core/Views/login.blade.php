@@ -14,8 +14,8 @@
                     <button type="submit" class="btn btn-success">Login</button>
                     <button type="button" onclick="cancel()" class="btn btn-danger">Cancel</button>
                 </div>
-
             </form>
+            <a href="{{route('user::dangky')}}">Create new account.</a>
         </div>
     </section>
 

@@ -12,7 +12,7 @@ Route::group([
 ],function (){
     Route::get('/register',function (){
         return view('User::register');
-    });
+    })->name('dangky');
     Route::post('/register','UserController@register');
-    Route::get('/logout','UserController@logout');
+    Route::get('/logout','UserController@logout')->name('logout');
 });

@@ -71,6 +71,7 @@ class UserController extends Controller
 
     public function logout(){
         session(['permission'=>'','user_id'=>'']);
+        return redirect('/');
     }
 
     private function checkUser($username,$email){
