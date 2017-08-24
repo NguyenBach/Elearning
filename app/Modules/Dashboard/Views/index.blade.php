@@ -358,7 +358,7 @@
                 </a>
                 <ul class="sub">
                     <li><a class="active" href="{{ URL::to('teacher/quiz')}}">List</a></li>
-                    <li><a class="active" href="{{ URL::to('teacher/quiz/generate')}}">Create</a></li>
+                    <li><a class="active" href="{{ URL::to('teacher/quiz/create')}}">Create</a></li>
                 </ul>
             </li>
 

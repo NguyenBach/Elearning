@@ -14,6 +14,7 @@ class QuestionQuizMap extends Migration
     public function up()
     {
         Schema::create('question_quiz_maps', function (Blueprint $table) {
+            $table->increments('id');
             $table->integer('quiz_id');
             $table->integer('question_id');
             $table->integer('bank_id');

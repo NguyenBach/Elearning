@@ -28,9 +28,10 @@ jQuery(document).ready(function() {
         createdRow : function (row, data, index) {
             // Action Column
             var detailBtn = '<a class="btn btn-sm btn-info" href="' + window.location.pathname + '/detail/' + data.id + '">Detail</a>';
+            var editBtn   = '<a class="btn btn-sm btn-success" href="' + window.location.pathname + '/edit/' + data.id + '">Edit</a>';
             var deleteBtn = '<a class="btn btn-sm btn-danger" onclick="deleteQuiz(' + data.id + ')">Delete</a>';
             var space     = '<span> </span>';
-            var actionCol = detailBtn + space + deleteBtn;
+            var actionCol = detailBtn + space + editBtn + space +  deleteBtn;
             $('td', row).eq(-1).html(actionCol).css('min-width', '180px');
         }
     });

@@ -30,6 +30,7 @@ Route::group([
     Route::get('/detail/{id}/create','Teacher@create_question');
     Route::post('/detail/{id}/create','Teacher@create_question');
 
+
     Route::get('/detail/{id}/edit/{qid}','Teacher@edit_question');
     Route::post('/detail/{id}/edit/{qid}','Teacher@edit_question');
 
