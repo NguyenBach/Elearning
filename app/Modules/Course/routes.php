@@ -30,6 +30,15 @@ Route::group([
 });
 
 Route::group([
+    'as' => 'ActivityDashboard::',
+    'prefix' => '/dashboard/activity',
+    'namespace' => 'App\Modules\Course\Controller'
+], function () {
+    Route::get('/', 'ActivityController@dashboard_index')->name('index');
+});
+
+
+Route::group([
     'as' => 'CourseAPI::',
     'prefix' => '/api/course',
     'namespace' => 'App\Modules\Course\Controller'
