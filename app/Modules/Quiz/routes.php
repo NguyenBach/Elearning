@@ -4,13 +4,15 @@
  /*  MAIN PAGE
  /* ----------------------------------------------------------- */
  Route::group([
-    'as' => 'quiz',
+    'as' => 'Quiz::',
     'prefix' => '/quiz',
     'namespace' => 'App\Modules\Quiz\Controllers'
  ],function (){
-     Route::get('/','Main@index');
-     Route::get('/{id}','Main@view');
-     Route::get('/{id}/doing','Main@doing');
+//     Route::get('/','Main@index');
+//     Route::get('/{id}','Main@view');
+     Route::get('/{id}/doing','Main@doing')->name('doing');
+     Route::get('/add','Main@addForm')->name('addForm');
+     Route::post('/add','Main@addQuiz')->name('add');
  });
 
  /* ----------------------------------------------------------- */
@@ -54,3 +56,4 @@ Route::group([
     Route::post('/edit/{id}/random_question','Teacher@random_question');
 
 });
+

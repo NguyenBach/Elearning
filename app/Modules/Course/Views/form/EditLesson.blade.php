@@ -16,7 +16,8 @@
             <option value="1">Lesson Template 1</option>
         </select>
         <br>
-        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#addActivity">Add Activity</button>
+        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#addActivity">Add Activity
+        </button>
 
         <table class="table">
             <tbody>
@@ -31,7 +32,7 @@
                 </th>
             </tr>
             @foreach($activities as $key => $activity)
-                <tr >
+                <tr>
                     <td>{{$key}}</td>
                     <td>{{$activity->name}}</td>
                     <td>{{$activity->description}}</td>
@@ -41,7 +42,9 @@
                     <td>{{$type->name}}</td>
                     <td>
                         <div class="btn-group">
-                            <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#myModal">Edit</button>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                Edit
+                            </button>
                             <a href="#" class="btn btn-danger">View</a>
                         </div>
                         <div class="modal fade" id="myModal" role="dialog">
@@ -50,7 +53,7 @@
                                 <!-- Modal content-->
                                 <div class="modal-content">
                                     <div class="modal-body">
-                                        <?php $view = $type->name.'::form.createForm'; ?>
+                                        <?php $view = $type->name . '::form.createForm'; ?>
                                         @include($view,['lesson'=>$lesson,'course'=>$course,'activity'=>$activity])
                                     </div>
 

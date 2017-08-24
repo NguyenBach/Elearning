@@ -1,8 +1,13 @@
-@extends('Core::template.index')
-@section('css')
-    <link href="{{url('js/DataTables-1.10.12/media/css/jquery.dataTables.css')}}" rel="stylesheet">
-@stop
-@section('content')
+{{--@extends('Core::template.index')--}}
+{{--@section('css')--}}
+    {{--<link href="{{url('js/DataTables-1.10.12/media/css/jquery.dataTables.css')}}" rel="stylesheet">--}}
+{{--@stop--}}
+{{--@section('content')--}}
+    <?php
+            if(isset($activity->activity_instance)){
+                $quiz = \App\Modules\Quiz\Models\Quiz::find($activity->activity_instance);
+            }
+    ?>
 <section id="courseArchive">
 <div class="container">
     <div class="row">
@@ -23,7 +28,7 @@
                 </div>
             </div>
             <div class="">
-              <a class="btn btn-lg btn-danger pull-right" href="{{ URL::to(url()->current().'/doing')}}">Start !</a>
+              <a class="btn btn-lg btn-danger pull-right" href="{{ route('Quiz::doing',['id'=>$quiz['id']])}}">Start !</a>
             </div>
           </div>
         </div>
@@ -31,14 +36,14 @@
 </div>
 </section>
 
-@stop
-@section('slider')
-    <section id="imgBanner">
-        <h2>{{ $quiz->name }}</h2>
-    </section>
+{{--@stop--}}
+{{--@section('slider')--}}
+    {{--<section id="imgBanner">--}}
+        {{--<h2>{{ $quiz->name }}</h2>--}}
+    {{--</section>--}}
 
 
-@stop
+{{--@stop--}}
 
-@section('script')
-@stop
+{{--@section('script')--}}
+{{--@stop--}}

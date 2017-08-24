@@ -18,7 +18,7 @@
                             @foreach($activities as $key => $activity)
                                 <div id="{{$activity->id}}" class="tab-pane fade in ">
                                     <?php $act = \App\Modules\Course\ActivityType::find($activity->type_id);
-                                        $view = $act->name.'::template.'.$act->type_template;
+                                        $view = $act->name.'::'.$act->type_template;
                                     ?>
                                     @include($view,['activity'=>$activity])
                                 </div>
