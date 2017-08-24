@@ -74,7 +74,9 @@
                                             @include($view,['lesson'=>$lesson,'course'=>$course,'activity'=>$activity])
                                     </div>
 
+
                                 </div>
+                            </div>
                             </div>
                         </td>
                     </tr>
