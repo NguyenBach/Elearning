@@ -46,15 +46,27 @@ class UserController extends Controller
             return redirect()->back()->withInput($request->all())->withErrors(['registererror'=>'Account is exist']);
         }
         $userId = $this->account->addAccount($username,$password);
+        if($userId == 0){
+            return redirect()->back()->withInput($request->all())->withErrors(['registererror'=>'Error1']);
+        }
         $data = [
             'id' => $userId,
             'fullname' => $fullname,
             'email' =>$email,
             'birthday' => $birthday
             ];
-        $this->user->addUser($data);
-        $this->permission->addPermission($userId,"student");
-        return redirect('/login');
+        $success = $this->user->addUser($data);
+        if($success == 0){
+            $this->undo($userId);
+            return redirect()->back()->withInput($request->all())->withErrors(['registererror'=>'Error2']);
+        }
+        $success = $this->permission->addPermission($userId,"student");
+        if($success == 0){
+            $this->undo($userId);
+            return redirect()->back()->withInput($request->all())->withErrors(['registererror'=>'Error3']);
+        }
+        $account['username'] = $username;
+        return view('User::welcome',['account'=>$account]);
     }
 
     public function login(LoginRequest $request){
@@ -88,8 +100,30 @@ class UserController extends Controller
         return redirect('/');
     }
 
+    public function addUser(Request $request){
+
+    }
+
     private function checkUser($username,$email){
         $user = $this->account->where('username',$username)->get();
         return count($user);
+    }
+
+    private function undo($userid){
+        $ac = $this->account->where('user_id',$userid)->first();
+        if(isset($ac->id)){
+            $ac->delete();
+        }
+        $us = $this->user->where('id', $userid)->first();
+        if(isset($us->id)){
+            $us->delete();
+        }
+        $us = $this->permission->where('user_id', $userid)->get();
+        if(count($us) > 0){
+            foreach ($us as $u){
+                $u->delete();
+            }
+        }
+
     }
 }

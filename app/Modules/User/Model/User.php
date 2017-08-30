@@ -20,7 +20,11 @@ class User extends Model
         $this->email = $data['email'];
         $this->birthday = $data['birthday'];
         $this->setCreatedAt(time());
-        $this->save();
-        return $this->id;
+        $success = $this->save();
+        if($success){
+            return $data['id'];
+        }else{
+            return 0;
+        }
     }
 }

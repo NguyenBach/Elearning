@@ -20,7 +20,11 @@ class Account extends Model
         $this->password = Hash::make($password);
         $this->user_id = time();
         $this->setCreatedAt(time());
-        $this->save();
-        return $this->user_id;
+        $success = $this->save();
+        if($success){
+            return $this->user_id;
+        }else{
+            return 0;
+        }
     }
 }
