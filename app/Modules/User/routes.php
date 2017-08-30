@@ -10,6 +10,17 @@ Route::group([
     'prefix' => '/user',
     'namespace' => 'App\Modules\User\Controller'
 ],function (){
+
+});
+
+
+
+/* LOGIN ROUTE */
+Route::group([
+    'namespace' => 'App\Modules\User\Controller',
+],function (){
+    Route::get('/login','LoginController@loginView')->name('thangdeptrai');
+    Route::post('/login','UserController@login');
     Route::get('/register',function (){
         return view('User::register');
     })->name('dangky');

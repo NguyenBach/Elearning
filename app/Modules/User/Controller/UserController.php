@@ -10,11 +10,15 @@ namespace App\Modules\User\Controller;
 
 
 use App\Http\Controllers\Controller;
+use App\Modules\User\Helper\UserHelper;
 use App\Modules\User\Model\Account;
 use App\Modules\User\Model\Permission;
 use App\Modules\User\Model\User;
+use App\Modules\User\Request\LoginRequest;
+use App\Modules\User\Request\RegisterRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\MessageBag;
 
 class UserController extends Controller
 {
@@ -28,15 +32,18 @@ class UserController extends Controller
         $this->permission = new Permission();
     }
 
-    public function register(Request $request){
+    public function register(RegisterRequest $request){
         $username = $request->input('username');
         $password = $request->input('password');
+        $repassword = $request->input('repassword');
         $fullname = $request->input('fullname');
         $email = $request->input('email');
         $birthday = $request->input('birthday');
-        $permission = $request->input('permission','student');
+        if($password !== $repassword){
+            return redirect()->back()->withInput($request->all())->withErrors(['password'=>'Repeat password is incorrect']);
+        }
         if($this->checkUser($username,$email)){
-            return redirect('/login');
+            return redirect()->back()->withInput($request->all())->withErrors(['registererror'=>'Account is exist']);
         }
         $userId = $this->account->addAccount($username,$password);
         $data = [
@@ -46,16 +53,20 @@ class UserController extends Controller
             'birthday' => $birthday
             ];
         $this->user->addUser($data);
-        $this->permission->addPermission($userId,$permission);
+        $this->permission->addPermission($userId,"student");
         return redirect('/login');
     }
 
-    public function login(Request $request){
+    public function login(LoginRequest $request){
         $username = $request->input('username');
         $password = $request->input('password');
+        if(UserHelper::isLogined()){
+            return redirect('/');
+        }
         $user = $this->account->where('username',$username)->first();
-        if(is_null($user)){
-            return view('Core::login');
+        if(count($user) == 0){
+            $errors = new MessageBag(['errorlogin'=>'Username or password is incorrect']);
+            return redirect()->back()->withInput(['username'=>$username])->withErrors($errors);
         }
         if(Hash::check($password,$user->password)){
             $permission = $this->permission->where('user_id',$user->user_id)->get();
@@ -63,14 +74,17 @@ class UserController extends Controller
             foreach ($permission as $per){
                 $p[] = $per->permission;
             }
-            session(['permission'=>$p]);
-            session(['user_id'=>$user->user_id]);
+            session(['permission'=>$p,'user_id'=>$user->user_id]);
             return redirect('/');
+        }else{
+            $errors = new MessageBag(['errorlogin'=>'Username or password is incorrect']);
+            return redirect()->back()->withInput(['username'=>$username])->withErrors($errors);
         }
     }
 
-    public function logout(){
-        session(['permission'=>'','user_id'=>'']);
+    public function logout(Request $request){
+        $request->session()->forget('permission');
+        $request->session()->forget('user_id');
         return redirect('/');
     }
 

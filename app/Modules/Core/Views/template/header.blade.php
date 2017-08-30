@@ -23,10 +23,12 @@
                     <ul id="top-menu" class="nav navbar-nav navbar-right main-nav">
                         <li class="active"><a href="{{route('index')}}">Home</a></li>
                         <li><a href="{{route('course::index')}}">Course</a></li>
+                        <li></li>
                         @if(!session('permission') )
                             <li><a href="{{route('thangdeptrai')}}">Login</a></li>
                         @else
                             <li><a href="{{route('dashboard::index')}}">Admin</a></li>
+                            <li><a href="{{route('logout')}}">Logout</a></li>
                         @endif
                     </ul>
                 </div><!--/.nav-collapse -->

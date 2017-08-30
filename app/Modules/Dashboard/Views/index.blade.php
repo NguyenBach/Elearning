@@ -260,7 +260,7 @@
                         <a href="#"><i class="icon_clock_alt"></i> Timeline</a>
                     </li>
                     <li>
-                        <a href="{{route('user::logout')}}"><i class="icon_key_alt"></i> Log Out</a>
+                        <a href="{{route('logout')}}"><i class="icon_key_alt"></i> Log Out</a>
                     </li>
                 </ul>
             </li>

@@ -31,4 +31,12 @@ class UserHelper
         }
         return ['teacher'=>$teacher,'student'=>$student,'guest'=>0];
     }
+    public static function isLogined(){
+        $userid = session('user_id');
+        if(isset($userid)){
+            return true;
+        }else {
+            return false;
+        }
+    }
 }
