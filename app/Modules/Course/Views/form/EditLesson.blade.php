@@ -1,6 +1,6 @@
 @extends('Dashboard::index')
 @section('mainContent')
-    <form action="" method="post" enctype="multipart/form-data">
+    <form action="" method="post" enctype="multipart/form-data" style="padding-left: 20px;padding-right: 20px">
         <h2>New Lesson</h2>
         <input type="hidden" name="courseid" value="{{$course->id}}">
         <input type="hidden" name="lessonid" value="{{$lesson->id}}">
@@ -8,18 +8,26 @@
         if (isset($lesson->title)) $action = 'edit'; else $action = 'new';
         ?>
         <input type="hidden" name="action" value="{{$action}}">
-        <label for="">Title: </label> <input type="text" name="title" value="{{$lesson->title}}"><br>
-        <label for="">Summary: </label> <textarea name="summary" cols="30" rows="10">{{$lesson->summary}}</textarea>
-        <br>
-        <label for="">Template: </label>
-        <select name="template">
-            <option value="1">Lesson Template 1</option>
-        </select>
-        <br>
+        <div class="form-group">
+            <label for="">Title: </label>
+            <input class="form-control" type="text" name="title" value="{{$lesson->title}}">
+        </div>
+        <div class="form-group">
+            <label for="">Summary: </label>
+            <textarea class="form-control" name="summary" cols="30" rows="10">{{$lesson->summary}}</textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="">Template: </label>
+            <select name="template" class="form-control">
+                <option value="1">Lesson Template 1</option>
+            </select>
+        </div>
+
         <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#addActivity">Add Activity
         </button>
 
-        <table class="table">
+        <table class="table" style="margin-top: 20px">
             <tbody>
             <tr>
                 <th>#</th>
@@ -67,8 +75,8 @@
             </tbody>
         </table>
         <br>
-        <button type="submit">OK</button>
-        <button type="button" onclick="window.location.href = '/course/{{$course->id}}'">Cancel</button>
+        <button type="submit" class="btn btn-success">OK</button>
+        <button class="btn btn-danger" type="button" onclick="window.location.href = '/course/{{$course->id}}'">Cancel</button>
     </form>
     <div class="modal fade" id="addActivity" role="dialog">
         <div class="modal-dialog">
