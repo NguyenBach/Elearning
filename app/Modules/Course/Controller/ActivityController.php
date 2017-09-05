@@ -14,6 +14,7 @@ use App\Modules\Course\ActivityType;
 use App\Modules\Course\Model\Course;
 use App\Modules\Course\Model\Lesson;
 use App\Modules\Course\Model\LessonActivity;
+use App\Modules\User\Helper\UserHelper;
 use Illuminate\Http\Request;
 
 class ActivityController extends Controller
@@ -59,6 +60,31 @@ class ActivityController extends Controller
         $activity->save();
         $route = $act->name . '::addForm';
         return redirect()->route($route,['course_id'=>$course->id,'lesson_id'=>$lesson->id,'activity_id'=>$activity->id]);
+    }
+
+    public function deleteActivity(Request $request){
+        $courseId = $request->input('course_id');
+        $lessonId = $request->input('lesson_id');
+        $activityId = $request->input('activity_id');
+        $permission = UserHelper::getAllPermission();
+        if($permission['teacher'] == 0){
+            return redirect('/');
+        }
+        $course = Course::find($courseId);
+        if(!isset($course->id)){
+            return response()->json(['success'=>0]);
+        }
+        $lesson = Lesson::where('course_id',$courseId)->where('id',$lessonId)->first();
+        if(!isset($lesson->id)){
+            return response()->json(['success'=>0]);
+        }
+        $activity = LessonActivity::where('course_id',$courseId)->where('lesson_id',$lessonId)->where('id',$activityId)->first();
+        if(!isset($activity->id)){
+            return response()->json(['success'=>0]);
+        }
+        $ls = new LessonActivity();
+        $success = $ls->deleteActivity($activityId);
+        return response()->json(['success'=>$success]);
     }
 
     public function dashboard_index(){

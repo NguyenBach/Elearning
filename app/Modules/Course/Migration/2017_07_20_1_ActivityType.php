@@ -25,6 +25,7 @@ class ActivityType extends Migration
             $table->mediumText('description');
             $table->string('type_template');
             $table->boolean('active');
+            $table->string('activity_table');
             $table->timestamps();
         });
     }

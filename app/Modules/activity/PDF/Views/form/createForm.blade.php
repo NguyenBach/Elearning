@@ -23,5 +23,5 @@
     <label for="">Intro:</label> <textarea name="intro"  cols="30" rows="10">{{$pdf->intro}}</textarea> <br>
     <label for="">PDF:</label> <input type="file" name="pdf" > <br>
     <button type="submit">OK</button>
-    <button type="button">Cancel</button>
+    <button type="button" onclick="window.location.href='{{route('course::editlesson',['id'=>$course->id,'lessonid'=>$lesson->id])}}'">Cancel</button>
 </form>

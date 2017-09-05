@@ -22,9 +22,9 @@ use Illuminate\Support\MessageBag;
 
 class UserController extends Controller
 {
-    public $user;
-    public $account;
-    public $permission;
+    private $user;
+    private $account;
+    private $permission;
     function __construct()
     {
         $this->user = new User();

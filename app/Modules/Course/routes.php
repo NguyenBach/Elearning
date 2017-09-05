@@ -14,11 +14,12 @@ Route::group([
     Route::get('/editcourse/{id}', 'CourseController@editCourse')->name('edit');
     Route::post('/editcourse/{id}', 'CourseController@newCourse');
     Route::get('/overview/{id}', 'CourseController@courseOverview')->name('overview');
-    Route::get('/{id}', ['uses' => 'CourseController@showCourse', 'as' => 'courseview']);
+    Route::get('/{id}',  'CourseController@showCourse')->name('courseview');
     Route::get('/{id}/{lessonid}', 'LessonController@showLesson')->name('lesson');
     Route::get('/{id}/editlesson/{lessonid}', 'LessonController@editLesson')->name('editlesson');
     Route::post('/{id}/editlesson/{lessonid}', 'LessonController@newLesson');
     Route::post('/newform','ActivityController@newActivityForm')->name('newform');
+    Route::post('/delete/activity/delete','ActivityController@deleteActivity')->name('deleteactivity');
 });
 
 Route::group([

@@ -71,11 +71,7 @@ class LessonController extends Controller
         } elseif ($action === 'edit') {
             $this->lesson->updateLesson($data);
         }
-        if ($this->course->getNumberCourse($data['courseid']) > $this->lesson->getNumberLesson($data['courseid'])) {
-            return redirect('/course/' . $data['courseid'] . '/editlesson/' . ($data['lessonid'] + 1));
-        } else {
-            redirect('/course/' . $data['courseid']);
-        }
+        return redirect()->route('course::overview',['id'=>$data['courseid']]);
     }
 
 }

@@ -1,21 +1,34 @@
 @extends('Dashboard::index')
 @section('mainContent')
-    <form action="" method="post" enctype="multipart/form-data">
-        <h2>New Lesson</h2>
+    <form class="lesson-add-form" style="margin: 30px" action="" method="post" enctype="multipart/form-data">
+        <?php
+        if (isset($lesson->title)) {
+            $action = 'edit';
+        } else {
+            $action = 'new';
+        }
+        ?>
+        <h2>{{strtoupper($action)}} LESSON</h2>
         <input type="hidden" name="courseid" value="{{$course->id}}">
         <input type="hidden" name="lessonid" value="{{$lesson->id}}">
-        <?php
-        if (isset($lesson->title)) $action = 'edit'; else $action = 'new';
-        ?>
         <input type="hidden" name="action" value="{{$action}}">
-        <label for="">Title: </label> <input type="text" name="title" value="{{$lesson->title}}"><br>
-        <label for="">Summary: </label> <textarea name="summary" cols="30" rows="10">{{$lesson->summary}}</textarea>
-        <br>
-        <label for="">Template: </label>
-        <select name="template">
-            <option value="1">Lesson Template 1</option>
-        </select>
-        <br>
+        <div class="form-group">
+            <label for="">Title: </label>
+            <input class="form-control" type="text" name="title" value="{{$lesson->title}}">
+        </div>
+        <div class="form-group">
+            <label for="">Summary: </label>
+            <textarea name="summary" class="form-control" cols="30" rows="10">{{$lesson->summary}}</textarea>
+
+        </div>
+        <div class="form-group">
+            <label for="">Template: </label>
+            <select name="template">
+                <option value="1">Lesson Template 1</option>
+            </select>
+        </div>
+
+
         <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#addActivity">Add Activity
         </button>
 
@@ -42,33 +55,20 @@
                     <td>{{$type->name}}</td>
                     <td>
                         <div class="btn-group">
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                                Edit
-                            </button>
-                            <a href="#" class="btn btn-danger">View</a>
+                            <?php $route = $type->name."::addForm"; ?>
+                            <a href="{{route($route,['course_id'=>$course,'lesson_id'=>$lesson,'activity_id'=>$activity])}}" class="btn btn-primary">Edit</a>
+                            <a href="#" class="btn btn-info">View</a>
+                            <a href="#"  class="btn btn-danger delete-activity" id="{{$activity->id}}">Delete</a>
                         </div>
-                        <div class="modal fade" id="myModal" role="dialog">
-                            <div class="modal-dialog">
 
-                                <!-- Modal content-->
-                                <div class="modal-content">
-                                    <div class="modal-body">
-                                        <?php $view = $type->name . '::form.createForm'; ?>
-                                        @include($view,['lesson'=>$lesson,'course'=>$course,'activity'=>$activity])
-                                    </div>
-
-                                </div>
-
-                            </div>
-                        </div>
                     </td>
                 </tr>
             @endforeach
             </tbody>
         </table>
         <br>
-        <button type="submit">OK</button>
-        <button type="button" onclick="window.location.href = '/course/{{$course->id}}'">Cancel</button>
+        <button class="btn btn-primary" type="submit">OK</button>
+        <button class="btn btn-danger" type="button" onclick="window.location.href = '/course/{{$course->id}}'">Cancel</button>
     </form>
     <div class="modal fade" id="addActivity" role="dialog">
         <div class="modal-dialog">
@@ -85,5 +85,26 @@
     </div>
 @stop
 @section('script')
-
+    <script>
+        $(document).ready(function () {
+            $('.delete-activity').click(function (e) {
+                $.ajax({
+                    url: '{{route('course::deleteactivity')}}',
+                    data: {'activity_id':$(this).attr('id'),'lesson_id':{{$lesson->id}},'course_id':{{$course->id}}},
+                    method: 'post',
+                    async: false,
+                    dataType: 'json',
+                    success: function (data) {
+                        if(data.success){
+                            location.reload();
+                        }
+                    },
+                    error: function (a, b, c) {
+                        console.log(a + b + c);
+                    }
+                });
+                e.preventDefault();
+            })
+        })
+    </script>
 @stop

@@ -25,5 +25,5 @@
     <label for="">Video Script:</label>
     <textarea name="videoscript"  cols="30" rows="10">{{$video->videoscript}}</textarea>
     <button type="submit">OK</button>
-    <button type="button">Cancel</button>
+    <button type="button" onclick="window.location.href='{{route('course::editlesson',['id'=>$course->id,'lessonid'=>$lesson->id])}}'">Cancel</button>
 </form>
