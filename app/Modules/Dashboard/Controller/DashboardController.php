@@ -15,7 +15,7 @@ use App\Modules\Course\Helper\CourseHelper;
 use App\Modules\Course\Model\Course;
 use App\Modules\Course\Model\CourseTeacher;
 use App\Modules\Course\Model\Lesson;
-use App\Modules\Course\Model\LessonActivity;
+use App\Modules\Course\Model\LessonModule;
 use App\Modules\User\Helper\UserHelper;
 use Illuminate\Http\Request;
 
@@ -152,7 +152,7 @@ class DashboardController extends Controller
                 $lesson = new Lesson();
                 $lesson->id = $lessonid;
             }
-            $activities = LessonActivity::where('lesson_id',$lesson->id)->get();
+            $activities = LessonModule::where('lesson_id',$lesson->id)->get();
         }
         return view('Dashboard::form.EditLesson', ['course' => $course, 'lesson' => $lesson,'activities'=>$activities]);
     }
@@ -186,7 +186,7 @@ class DashboardController extends Controller
         $view = $act->name.'::form.createForm';
         $course = Course::find($courseId);
         $lesson = Lesson::where('course_id',$courseId)->where('id',$lessonId)->first();
-        $activity = new LessonActivity();
+        $activity = new LessonModule();
         $activity->course_id = $courseId;
         $activity->lesson_id = $lessonId;
         $activity->name = $name;

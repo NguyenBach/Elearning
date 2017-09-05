@@ -6,7 +6,7 @@ namespace App\Modules\Quiz\Controllers;
 use App\Http\Controllers\Controller;
 use App\Modules\Course\Model\Course;
 use App\Modules\Course\Model\Lesson;
-use App\Modules\Course\Model\LessonActivity;
+use App\Modules\Course\Model\LessonModule;
 use App\Modules\Quiz\Models\Quiz;
 use App\Modules\Quiz\Models\QuestionBank;
 use App\Modules\Quiz\Models\QuestionQuizMap;
@@ -71,7 +71,7 @@ class Main extends Controller
         $activityId = $request->input('activity_id');
         $course = Course::find($courseId);
         $lesson = Lesson::where('course_id', $courseId)->where('id', $lessonId)->first();
-        $activity = LessonActivity::find($activityId);
+        $activity = LessonModule::find($activityId);
         return view('Quiz::form.createForm', ['course' => $course, 'lesson' => $lesson, 'activity' => $activity]);
     }
 
@@ -82,9 +82,9 @@ class Main extends Controller
         $instance = $request->input('instance');
         $activityId = $request->input('activity_id');
         $quizId = $request->input('quiz');
-        $lessonActivity = LessonActivity::find($activityId);
-        $lessonActivity->activity_instance = $quizId;
-        $lessonActivity->save();
+        $LessonModule = LessonModule::find($activityId);
+        $LessonModule->instance = $quizId;
+        $LessonModule->save();
         return redirect()->route('course::editlesson', ['id' => $courseId, 'lesson' => $lessonId]);
 
     }

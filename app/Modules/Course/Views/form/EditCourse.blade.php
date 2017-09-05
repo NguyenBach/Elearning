@@ -3,6 +3,7 @@
     <div class="container">
         <form method="post" enctype="multipart/form-data" action="">
             <input type="hidden" name="id" value="{{$course->id}}">
+            <input type="hidden" name="_token" value="{{csrf_token()}}">
             <input type="hidden" name="action"
                    value="<?php if (isset($course->fullname)) echo 'edit'; else echo 'new';  ?>">
             <div class="form-group">

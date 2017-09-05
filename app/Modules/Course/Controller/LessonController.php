@@ -12,7 +12,7 @@ namespace App\Modules\Course\Controller;
 use App\Http\Controllers\Controller;
 use App\Modules\Course\Model\Lesson;
 use App\Modules\Course\Model\Course;
-use App\Modules\Course\Model\LessonActivity;
+use App\Modules\Course\Model\LessonModule;
 use Illuminate\Http\Request;
 
 class LessonController extends Controller
@@ -29,7 +29,7 @@ class LessonController extends Controller
     public function showLesson($id,$lessonid)
     {
         $course = Course::find($id);
-        $activities = LessonActivity::where('course_id',$id)->where('lesson_id',$lessonid)->get();
+        $activities = LessonModule::where('course_id',$id)->where('lesson_id',$lessonid)->get();
         $lesson = Lesson::where('course_id',$id)->where('id',$lessonid)->first();
         return view('Course::lesson',['course'=>$course,'lesson'=>$lesson,'activities'=>$activities]);
     }
@@ -51,7 +51,7 @@ class LessonController extends Controller
                 $lesson = new Lesson();
                 $lesson->id = $lessonid;
             }
-            $activities = LessonActivity::where('course_id',$id)->where('lesson_id', $lesson->id)->get();
+            $activities = LessonModule::where('course_id',$id)->where('lesson_id', $lesson->id)->get();
 
         }
         return view('Course::form.EditLesson', ['course' => $course, 'lesson' => $lesson, 'activities' => $activities]);

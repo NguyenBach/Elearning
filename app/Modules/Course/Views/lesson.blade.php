@@ -11,14 +11,20 @@
                         </div>
                         <ul class="nav nav-tabs">
                             @foreach($activities as $key => $activity)
-                                <li><a data-toggle="tab" href="#{{$activity->id}}">{{$activity->name}}</a></li>
+                                <?php
+                                $act = \App\Modules\Course\ActivityType::find($activity->type_id);
+                                $instance = \Illuminate\Support\Facades\DB::table($act->table)->where('id',$activity->instance)->first();
+                                $view = $act->name . '::' . $instance->template;
+                                ?>
+                                <li><a data-toggle="tab" href="#{{$activity->id}}">{{$instance->name}}</a></li>
+
                             @endforeach
                         </ul>
                         <div class="tab-content">
                             @foreach($activities as $key => $activity)
-                                <div id="{{$activity->id}}" class="tab-pane fade in ">
-                                    <?php $act = \App\Modules\Course\ActivityType::find($activity->type_id);
-                                        $view = $act->name.'::'.$act->type_template;
+                                <?php if($key == 0) $active = 'active' ?>
+                                <div id="{{$activity->id}}" class="tab-pane fade in {{$active}}">
+                                    <?php
                                     ?>
                                     @include($view,['activity'=>$activity])
                                 </div>

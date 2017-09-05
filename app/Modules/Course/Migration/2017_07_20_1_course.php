@@ -27,7 +27,7 @@ class Course extends Migration
             $table->string('feature_picture');
             $table->date('start_date');
             $table->string('course_format');
-            $table->integer('number_lessions');
+            $table->integer('number_lessons');
             $table->boolean('active');
             $table->boolean('visiblea');
             $table->timestamps();

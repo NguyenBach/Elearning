@@ -62,6 +62,10 @@ return [
             'region' => env('AWS_REGION'),
             'bucket' => env('AWS_BUCKET'),
         ],
+        'mod'=>[
+            'driver' => 'local',
+            'root' => app_path('Modules/mod')
+        ]
 
     ],
 

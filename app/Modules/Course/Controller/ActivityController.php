@@ -11,9 +11,10 @@ namespace App\Modules\Course\Controller;
 
 use App\Http\Controllers\Controller;
 use App\Modules\Course\ActivityType;
+use App\Modules\Course\Helper\CourseHelper;
 use App\Modules\Course\Model\Course;
 use App\Modules\Course\Model\Lesson;
-use App\Modules\Course\Model\LessonActivity;
+use App\Modules\Course\Model\LessonModule;
 use App\Modules\User\Helper\UserHelper;
 use Illuminate\Http\Request;
 
@@ -41,25 +42,31 @@ class ActivityController extends Controller
         return response()->json($a);
     }
 
-    public function newActivityForm(Request $request){
+    /**
+     * Redirect to create form of Activity
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function createActivity(Request $request){
         $act = $request->input('activity');
         $courseId = $request->input('course_id');
         $lessonId = $request->input('lesson_id');
-        $name =  $request->input('name');
-        $description = $request->input('description');
         $act = ActivityType::find($act);
-        $view = $act->name.'::form.createForm';
-        $course = Course::find($courseId);
-        $lesson = Lesson::where('course_id',$courseId)->where('id',$lessonId)->first();
-        $activity = new LessonActivity();
-        $activity->course_id = $courseId;
-        $activity->lesson_id = $lessonId;
-        $activity->name = $name;
-        $activity->description = $description;
-        $activity->type_id = $act->id;
-        $activity->save();
+        if(!isset($act->id)){
+            return redirect()->back()->with('message','Error');
+        }
+        if(CourseHelper::checkCourseExist($courseId)){
+            $course = CourseHelper::checkCourseExist($courseId);
+        }else{
+            return redirect()->back()->with('message','Error');
+        }
+        if(CourseHelper::checkLessonExist($courseId,$lessonId)){
+            $lesson = CourseHelper::checkLessonExist($courseId,$lessonId);
+        }else{
+            return redirect()->back()->with('message','Error');
+        }
         $route = $act->name . '::addForm';
-        return redirect()->route($route,['course_id'=>$course->id,'lesson_id'=>$lesson->id,'activity_id'=>$activity->id]);
+        return redirect()->route($route,['course_id'=>$course->id,'lesson_id'=>$lesson->id]);
     }
 
     public function deleteActivity(Request $request){
@@ -78,11 +85,11 @@ class ActivityController extends Controller
         if(!isset($lesson->id)){
             return response()->json(['success'=>0]);
         }
-        $activity = LessonActivity::where('course_id',$courseId)->where('lesson_id',$lessonId)->where('id',$activityId)->first();
+        $activity = LessonModule::where('course_id',$courseId)->where('lesson_id',$lessonId)->where('id',$activityId)->first();
         if(!isset($activity->id)){
             return response()->json(['success'=>0]);
         }
-        $ls = new LessonActivity();
+        $ls = new LessonModule();
         $success = $ls->deleteActivity($activityId);
         return response()->json(['success'=>$success]);
     }

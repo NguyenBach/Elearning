@@ -16,10 +16,7 @@ return  [
         'Dashboard',
         'Quiz'
     ],
-    'activitymodules'=>[
-        'Audio',
+    'mod'=>[
         'Text',
-        'Video',
-        'PDF'
     ]
 ];

@@ -4,8 +4,8 @@
 {{--@stop--}}
 {{--@section('content')--}}
     <?php
-            if(isset($activity->activity_instance)){
-                $quiz = \App\Modules\Quiz\Models\Quiz::find($activity->activity_instance);
+            if(isset($activity->instance)){
+                $quiz = \App\Modules\Quiz\Models\Quiz::find($activity->instance);
             }
     ?>
 <section id="courseArchive">

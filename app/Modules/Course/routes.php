@@ -8,7 +8,8 @@
 Route::group([
     'as' => 'course::',
     'prefix' => '/course',
-    'namespace' => 'App\Modules\Course\Controller'
+    'namespace' => 'App\Modules\Course\Controller',
+    'middleware' => 'web'
 ], function () {
     Route::get('/', 'CourseController@index')->name('index');
     Route::get('/editcourse/{id}', 'CourseController@editCourse')->name('edit');
@@ -18,7 +19,7 @@ Route::group([
     Route::get('/{id}/{lessonid}', 'LessonController@showLesson')->name('lesson');
     Route::get('/{id}/editlesson/{lessonid}', 'LessonController@editLesson')->name('editlesson');
     Route::post('/{id}/editlesson/{lessonid}', 'LessonController@newLesson');
-    Route::post('/newform','ActivityController@newActivityForm')->name('newform');
+    Route::post('/newform','ActivityController@createActivity')->name('createActivity');
     Route::post('/delete/activity/delete','ActivityController@deleteActivity')->name('deleteactivity');
 });
 
