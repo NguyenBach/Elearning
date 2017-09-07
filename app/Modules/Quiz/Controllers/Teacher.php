@@ -29,11 +29,13 @@ class Teacher extends Controller
         $lessonId = $request->input('lesson_id');
         $activity = ActivityType::where('name', 'Quiz')->first()->id;
         $action = $request->input('action');
+        $activity_id = $request->input('activity_id');
         if($request->isMethod('post') && $action == 'new'){
             $quiz = new Quiz;
             $lesson_activity = new LessonModule();
             $quiz->name = $request->name;
             $quiz->description = $request->description;
+            $quiz->template = 'template.overview';
             $success = $quiz->save();
             if ($success){
                 $instance = $quiz->id;
@@ -50,6 +52,11 @@ class Teacher extends Controller
                 }
                 return redirect()->route('course::editlesson', ['id' => $data['course_id'], 'lesson' => $data['lesson_id']]);
             }
+
+        }
+        else if ($request->isMethod('get') && isset($activity_id)){
+            $id = LessonModule::where('id',$activity_id)->first()->instance;
+            return redirect('teacher/quiz/edit/'.$id);
 
         }
         $action = 'new';

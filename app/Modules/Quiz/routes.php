@@ -11,6 +11,7 @@
 //     Route::get('/','Main@index');
 //     Route::get('/{id}','Main@view');
      Route::get('/{id}/doing','Main@doing')->name('doing');
+     Route::post('/{id}/doing','Main@doing')->name('doing');
     //  Route::get('/add','Main@addForm')->name('addForm');
     //  Route::post('/add','Main@addQuiz')->name('add');
  });

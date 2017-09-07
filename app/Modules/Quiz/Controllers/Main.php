@@ -35,8 +35,25 @@ class Main extends Controller
         return view('Quiz::main/view', ['quiz' => $quiz, 'question_banks' => $question_banks]);
     }
 
-    public function doing($id)
+    public function doing(Request $request, $id)
     {
+
+        if ($request->isMethod('post')){
+            $answers = $request->all();
+            $right_answers = 0;
+            $total  = count($answers);
+            $result = '';
+            foreach ($answers as $key => $value) {
+                $question = Question::find($key);
+                if ($value == $question['option_0']){
+                    $right_answers = $right_answers +1;
+                }
+                $answers[$key] = $question['option_0'];
+            }
+            $result = array('result' => $right_answers . '/' . $total);
+            $result = $result + $answers;
+            return json_encode($result);
+        }
         $quiz = Quiz::find($id);
         $questions = array();
         $question_ids = QuestionQuizMap::inRandomOrder()->where('quiz_id', $quiz->id)->get();
@@ -54,6 +71,8 @@ class Main extends Controller
                 }
             }
         }
+        shuffle($questions);
+
         return view('Quiz::main/doing', ['questions' => $questions]);
     }
 
