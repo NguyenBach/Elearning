@@ -29,7 +29,7 @@ class UserHelper
                 $student = 1;
             }
         }
-        return ['teacher'=>$teacher,'student'=>$student,'guest'=>0];
+        return ['teacher'=>$teacher,'student'=>$student,'guest'=>0,'admin'=>0];
     }
     public static function isLogined(){
         $userid = session('user_id');

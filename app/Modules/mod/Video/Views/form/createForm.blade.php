@@ -1,29 +1,55 @@
-<form action="{{route('Video::add')}}" enctype="multipart/form-data" method="post">
-    <h3>Video</h3>
-    <?php if(!isset($activity->instance)){
-        $action = 'new';
-        $lastid = \App\Modules\activity\Video\Model\VideoContent::all()->last();
-        if(isset($lastid->id)) {
-            $lastid = $lastid->id;
+@extends('Dashboard::index')
+@section('mainContent')
+    <form action="{{route('Video::addVideo')}}" enctype="multipart/form-data" method="post" style="margin: 30px" class="">
+        <h3>{{ucfirst($action)}} Video</h3>
+        <input type="hidden" name="_token" value="{{csrf_token()}}">
+        <input type="hidden" name="action" value="{{$action}}">
+        <input type="hidden" name="course_id" value="{{$course->id}}">
+        <input type="hidden" name="lesson_id" value="{{$lesson->id}}">
+        <input type="hidden" name="activity_id" value="{{$activity->id}}">
+        <?php
+        if(isset($activity->id)){
+            $act = \App\Modules\mod\Video\Model\Video::find($activity->instance);
+            $content = \App\Modules\mod\Video\Model\VideoContent::where('mod_id',$act->id)->first();
         }else{
-            $lastid = 0;
+            $act = new App\Modules\mod\Video\Model\Video();
+            $content = new \App\Modules\mod\Video\Model\VideoContent();
         }
-        $activity->instance = $lastid+1;
-        $video = new \App\Modules\activity\Video\Model\VideoContent();
-    }  else{
-        $action = 'edit';
-        $video = \App\Modules\activity\Video\Model\VideoContent::where('id',$activity->instance)->first();
-    }  ?>
-    <input type="hidden" name="action" value="{{$action}}">
-    <input type="hidden" name="course_id" value="{{$course->id}}">
-    <input type="hidden" name="lesson_id" value="{{$lesson->id}}">
-    <input type="hidden" name="activity_id" value="{{$activity->id}}">
-    <input type="hidden" name="instance" value="{{$activity->instance}}">
-    <label for="">Name:</label> <input type="text" name="name" value="{{$video->name}}"> <br>
-    <label for="">Intro:</label> <textarea name="intro"  cols="30" rows="10">{{$video->intro}}</textarea> <br>
-    <label for="">Video:</label> <input type="file" name="video" > <br>
-    <label for="">Video Script:</label>
-    <textarea name="videoscript"  cols="30" rows="10">{{$video->videoscript}}</textarea>
-    <button type="submit">OK</button>
-    <button type="button" onclick="window.location.href='{{route('course::editlesson',['id'=>$course->id,'lessonid'=>$lesson->id])}}'">Cancel</button>
-</form>
+        ?>
+        <h5 style="font-weight: bold ">General Setting</h5>
+        <div class="form-group">
+            <label for="">Name: </label>
+            <input class="form-control" type="text" name="name" value="{{$act->name}}"> <br>
+        </div>
+        <div class="form-group">
+            <label for="">Description: </label>
+            <textarea class="form-control" name="description" cols="30" rows="10">{{$act->description}}</textarea>
+        </div>
+        <div class="form-group" style="border-bottom: 1px solid #000000;">
+            <label for="">Template:</label>
+            <select name="template"  class="form-control" style="margin-bottom: 50px">
+
+                <option value="template.template1">Template1</option>
+            </select>
+
+        </div>
+
+        <br>
+
+        <h5 style="font-weight: bold">Video Content</h5>
+        <div class="form-group">
+            <label for="">Video:</label>
+            <input class="form-control" type="file" name="video"> <br>
+        </div>
+        <div class="form-group">
+            <label for="">Script:</label>
+            <textarea  class="form-control" name="script" cols="30" rows="10">{{$content->script}}</textarea> <br>
+        </div>
+        <button type="submit" class="btn btn-primary">OK</button>
+        <button id="cancel" type="button" class="btn btn-danger">Cancel</button>
+
+    </form>
+@stop
+@section('script')
+
+@stop

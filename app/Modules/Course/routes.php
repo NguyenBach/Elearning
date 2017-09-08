@@ -9,18 +9,27 @@ Route::group([
     'as' => 'course::',
     'prefix' => '/course',
     'namespace' => 'App\Modules\Course\Controller',
-    'middleware' => 'web'
+    'middleware' => ['web','permission']
 ], function () {
-    Route::get('/', 'CourseController@index')->name('index');
     Route::get('/editcourse/{id}', 'CourseController@editCourse')->name('edit');
     Route::post('/editcourse/{id}', 'CourseController@newCourse');
     Route::get('/overview/{id}', 'CourseController@courseOverview')->name('overview');
-    Route::get('/{id}',  'CourseController@showCourse')->name('courseview');
-    Route::get('/{id}/{lessonid}', 'LessonController@showLesson')->name('lesson');
     Route::get('/{id}/editlesson/{lessonid}', 'LessonController@editLesson')->name('editlesson');
     Route::post('/{id}/editlesson/{lessonid}', 'LessonController@newLesson');
     Route::post('/newform','ActivityController@createActivity')->name('createActivity');
     Route::post('/delete/activity/delete','ActivityController@deleteActivity')->name('deleteactivity');
+});
+
+Route::group([
+    'as' => 'course::',
+    'prefix' => '/course',
+    'namespace' => 'App\Modules\Course\Controller',
+    'middleware' => 'web'
+],function (){
+    Route::get('/', 'CourseController@index')->name('index');
+    Route::get('/{id}',  'CourseController@showCourse')->name('courseview');
+    Route::get('/{id}/{lessonid}', 'LessonController@showLesson')->name('lesson');
+
 });
 
 Route::group([

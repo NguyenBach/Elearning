@@ -8,7 +8,7 @@
 
 <a class="scrollToTop" href="#"></a>
 @section('header')
-    @include('Core::template.header')
+{{--    @include('Core::template.header')--}}
 @show
 @section('slider')@show
 @section('content')@show
