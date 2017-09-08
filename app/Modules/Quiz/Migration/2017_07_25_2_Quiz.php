@@ -18,6 +18,7 @@ class Quiz extends Migration
             $table->string('name');
             $table->string('description');
             $table->string('random_banks');
+            $table->string('template');
             $table->timestamps();
         });
     }
