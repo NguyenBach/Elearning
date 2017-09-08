@@ -22,10 +22,9 @@ class VideoContent extends Migration{
     {
         Schema::create('video_content', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('intro');
-            $table->string('video_link');
-            $table->string('video_script');
+            $table->integer('mod_id');
+            $table->string('url');
+            $table->longText('script');
             $table->timestamps();
         });
     }

@@ -18,5 +18,7 @@ return  [
     ],
     'mod'=>[
         'Text',
+        'Video',
+
     ]
 ];

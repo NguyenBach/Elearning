@@ -12,6 +12,7 @@
         <input type="hidden" name="courseid" value="{{$course->id}}">
         <input type="hidden" name="lessonid" value="{{$lesson->id}}">
         <input type="hidden" name="action" value="{{$action}}">
+        <input type="hidden" name="_token" value="{{csrf_token()}}">
         <div class="form-group">
             <label for="">Title: </label>
             <input class="form-control" type="text" name="title" value="{{$lesson->title}}">
@@ -46,19 +47,21 @@
             </tr>
             @foreach($activities as $key => $activity)
                 <tr>
-                    <td>{{$key}}</td>
-                    <td>{{$activity->name}}</td>
-                    <td>{{$activity->description}}</td>
                     <?php
-
-                    $type = App\Modules\Course\ActivityType::find($activity->type_id); ?>
+                    $type = App\Modules\Course\ActivityType::find($activity->type_id);
+                    $act = \Illuminate\Support\Facades\DB::table($type->table)->where('id', $activity->instance)->first();
+                    ?>
+                    <td>{{$key+1}}</td>
+                    <td>{{$act->name}}</td>
+                    <td>{{$act->description}}</td>
                     <td>{{$type->name}}</td>
                     <td>
                         <div class="btn-group">
-                            <?php $route = $type->name."::addForm"; ?>
-                            <a href="{{route($route,['course_id'=>$course,'lesson_id'=>$lesson,'activity_id'=>$activity])}}" class="btn btn-primary">Edit</a>
+                            <?php $route = $type->name . "::addForm"; ?>
+                            <a href="{{route($route,['course_id'=>$course,'lesson_id'=>$lesson,'activity_id'=>$activity])}}"
+                               class="btn btn-primary">Edit</a>
                             <a href="#" class="btn btn-info">View</a>
-                            <a href="#"  class="btn btn-danger delete-activity" id="{{$activity->id}}">Delete</a>
+                            <a href="#" class="btn btn-danger delete-activity" id="{{$activity->id}}">Delete</a>
                         </div>
 
                     </td>
@@ -68,7 +71,8 @@
         </table>
         <br>
         <button class="btn btn-primary" type="submit">OK</button>
-        <button class="btn btn-danger" type="button" onclick="window.location.href = '/course/{{$course->id}}'">Cancel</button>
+        <button class="btn btn-danger" type="button" onclick="window.location.href = '/course/{{$course->id}}'">Cancel
+        </button>
     </form>
     <div class="modal fade" id="addActivity" role="dialog">
         <div class="modal-dialog">
@@ -90,12 +94,12 @@
             $('.delete-activity').click(function (e) {
                 $.ajax({
                     url: '{{route('course::deleteactivity')}}',
-                    data: {'activity_id':$(this).attr('id'),'lesson_id':{{$lesson->id}},'course_id':{{$course->id}}},
+                    data: {'activity_id': $(this).attr('id'), 'lesson_id':{{$lesson->id}}, 'course_id':{{$course->id}}},
                     method: 'post',
                     async: false,
                     dataType: 'json',
                     success: function (data) {
-                        if(data.success){
+                        if (data.success) {
                             location.reload();
                         }
                     },

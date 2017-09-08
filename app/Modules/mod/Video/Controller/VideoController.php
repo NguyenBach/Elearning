@@ -6,11 +6,14 @@
  * Time: 20:39
  */
 
-namespace App\Modules\activity\Video\Controller;
+namespace App\Modules\mod\Video\Controller;
 
 
 use App\Http\Controllers\Controller;
-use App\Modules\activity\Video\Model\VideoContent;
+use App\Modules\Course\ActivityType;
+use App\Modules\Course\Helper\CourseHelper;
+use App\Modules\mod\Video\Model\Video;
+use App\Modules\mod\Video\Model\VideoContent;
 use App\Modules\Course\Model\Course;
 use App\Modules\Course\Model\Lesson;
 use App\Modules\Course\Model\LessonModule;
@@ -26,52 +29,94 @@ class VideoController extends Controller
         $courseId = $request->input('course_id');
         $lessonId = $request->input('lesson_id');
         $activityId = $request->input('activity_id');
-        $course = Course::find($courseId);
-        $lesson = Lesson::where('course_id', $courseId)->where('id', $lessonId)->first();
-        $activity = LessonModule::find($activityId);
-        return view('Video::form.createForm', ['course' => $course, 'lesson' => $lesson, 'activity' => $activity]);
+        if (isset($activityId)) {
+            $action = 'edit';
+            if (CourseHelper::checkActivityExist($courseId, $lessonId, $activityId)) {
+                $activity = CourseHelper::checkActivityExist($courseId, $lessonId, $activityId);
+            } else {
+                return redirect()->back()->with('message', 'Error');
+            }
+        } else {
+            $action = 'new';
+            $activity = new LessonModule();
+        }
+        if (CourseHelper::checkCourseExist($courseId)) {
+            $course = CourseHelper::checkCourseExist($courseId);
+        } else {
+            return redirect()->back()->with('message', 'Error');
+        }
+        if (CourseHelper::checkLessonExist($courseId, $lessonId)) {
+            $lesson = CourseHelper::checkLessonExist($courseId, $lessonId);
+        } else {
+            return redirect()->back()->with('message', 'Error');
+        }
+
+        return view('Video::form.createForm', ['course' => $course, 'lesson' => $lesson, 'action' => $action, 'activity' => $activity]);
     }
 
     public function addVideo(Request $request)
     {
-        $action = $request->input('action');
-        $courseId = $request->input('course_id');
-        $lessonId = $request->input('lesson_id');
-        $instance = $request->input('instance');
-        $activityId = $request->input('activity_id');
-        $title = $request->input('name');
-        $content = $request->input('intro');
-        $videoscript = $request->input('videoscript');
-        $file = $request->file('video');
+        $data = $request->all();
+        $action = $data['action'];
         if ($action == 'new') {
-            $video = new VideoContent();
-            $video->name = $title;
-            $video->intro = $content;
-            $video->video_script = $videoscript;
-            $video->video_link = $this->uploadFile($request, $courseId);
-            $video->setCreatedAt(time());
-            $video->save();
-            $LessonModule = LessonModule::find($activityId);
-            $LessonModule->instance = $video->id;
-            $LessonModule->save();
-
-
+            $video = new Video();
+            $id = $video->createInstance($data);
+            if (!$id) {
+                return redirect()->back()->with('message', 'error');
+            }
+            $data['mod_id'] = $id;
+            $data['url'] = $this->uploadFile($request, $id);
+            $content = new VideoContent();
+            $contentId = $content->createInstance($data);
+            if (!$contentId) {
+                return redirect()->back()->with('message', 'error');
+            }
+            $data['instance'] = $id;
+            $data['type_id'] = $this->getType();
+            $lessonModule = new LessonModule();
+            $success = $lessonModule->createActivity($data);
+            if (!$success) {
+                return redirect()->back()->with('message', 'Error');
+            }
         } else {
-            $text = VideoContent::find($instance);
+            $activityId = $request->input('activity_id');
+            $module = LessonModule::where('id', $activityId)->first();
+            $data['id'] = $module->instance;
+            $video = new Video();
+            $id = $video->updateInstance($data);
+            if (!$id) {
+                return redirect()->back()->with('message', 'error');
+            }
+            $data['mod_id'] = $id;
+            $data['url'] = $this->uploadFile($request,$id);
+            $content = new VideoContent();
+            $success = $content->updateInstance($data);
+            if (!$success) {
+                return redirect()->back()->with('message', 'error');
+            }
 
         }
-        return redirect()->route('course::editlesson', ['id' => $courseId, 'lesson' => $lessonId]);
+        return redirect()->route('course::editlesson', ['id' => $data['course_id'], 'lesson' => $data['lesson_id']]);
 
     }
 
     public function uploadFile(Request $request, $id)
     {
         $file = $request->file('video');
+        if (!isset($file)) {
+            return '';
+        }
         $fileName = $file->getClientOriginalName();
         $fileName = $id . '_' . time() . '_' . $fileName;
         $destinationPath = storage_path('app/public/video');
         $file->move($destinationPath, $fileName);
-        $url = url('storage/video/'.$fileName);
+        $url = url('storage/video/' . $fileName);
         return $url;
+    }
+
+    private function getType()
+    {
+        $type = ActivityType::where('name', 'Video')->first();
+        return $type->id;
     }
 }

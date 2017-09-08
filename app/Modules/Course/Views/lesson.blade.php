@@ -14,7 +14,7 @@
                                 <?php
                                 $act = \App\Modules\Course\ActivityType::find($activity->type_id);
                                 $instance = \Illuminate\Support\Facades\DB::table($act->table)->where('id',$activity->instance)->first();
-                                $view = $act->name . '::' . $instance->template;
+                                $view[$key] = $act->name . '::' . $instance->template;
                                 ?>
                                 <li><a data-toggle="tab" href="#{{$activity->id}}">{{$instance->name}}</a></li>
 
@@ -22,11 +22,11 @@
                         </ul>
                         <div class="tab-content">
                             @foreach($activities as $key => $activity)
-                                <?php if($key == 0) $active = 'active' ?>
+                                <?php if($key == 0) $active = 'active'; else $active=''; ?>
                                 <div id="{{$activity->id}}" class="tab-pane fade in {{$active}}">
                                     <?php
                                     ?>
-                                    @include($view,['activity'=>$activity])
+                                    @include($view[$key],['activity'=>$activity])
                                 </div>
                             @endforeach
 
