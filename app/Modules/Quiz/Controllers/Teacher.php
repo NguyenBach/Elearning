@@ -7,6 +7,8 @@ use App\Modules\Quiz\Models\Quiz;
 use App\Modules\Quiz\Models\QuestionQuizMap;
 use App\Modules\Quiz\Models\QuestionBank;
 use App\Modules\Quiz\Models\Question;
+use App\Modules\Course\ActivityType;
+use App\Modules\Course\Model\LessonModule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Datatables;
@@ -23,16 +25,42 @@ class Teacher extends Controller
 
     // Quiz
     public function create(Request $request){
-        $quiz = new Quiz;
-        if($request->isMethod('post')){
+        $courseId = $request->input('course_id');
+        $lessonId = $request->input('lesson_id');
+        $activity = ActivityType::where('name', 'Quiz')->first()->id;
+        $action = $request->input('action');
+        $activity_id = $request->input('activity_id');
+        if($request->isMethod('post') && $action == 'new'){
+            $quiz = new Quiz;
+            $lesson_activity = new LessonModule();
             $quiz->name = $request->name;
             $quiz->description = $request->description;
-            $quiz->save();
+            $quiz->template = 'template.overview';
+            $success = $quiz->save();
+            if ($success){
+                $instance = $quiz->id;
+                $data = array(
+                  'course_id'  => $courseId,
+                  'lesson_id'  => $lessonId,
+                  'type_id'    => $activity,
+                  'instance'   => $instance
+                );
 
-            return redirect('teacher/quiz');
+                $success = $lesson_activity->createActivity($data);
+                if (!$success) {
+                    return redirect()->back()->with('message', 'Error');
+                }
+                return redirect()->route('course::editlesson', ['id' => $data['course_id'], 'lesson' => $data['lesson_id']]);
+            }
+
         }
+        else if ($request->isMethod('get') && isset($activity_id)){
+            $id = LessonModule::where('id',$activity_id)->first()->instance;
+            return redirect('teacher/quiz/edit/'.$id);
 
-        return view('Quiz::teacher/create');
+        }
+        $action = 'new';
+        return view('Quiz::form.createForm', ['courseId' => $courseId, 'lessonId' => $lessonId, 'action' => $action, 'activity' => $activity]);
     }
 
 

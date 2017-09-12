@@ -25,6 +25,9 @@
                                 <?php if($key == 0) $active = 'active'; else $active=''; ?>
                                 <div id="{{$activity->id}}" class="tab-pane fade in {{$active}}">
                                     <?php
+                                    $act = \App\Modules\Course\ActivityType::find($activity->type_id);
+                                    $instance = \Illuminate\Support\Facades\DB::table($act->table)->where('id',$activity->instance)->first();
+                                    $view = $act->name . '::' . $instance->template;
                                     ?>
                                     @include($view[$key],['activity'=>$activity])
                                 </div>
