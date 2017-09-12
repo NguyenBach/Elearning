@@ -10,6 +10,7 @@ namespace App\Modules\Course\Controller;
 
 
 use App\Http\Controllers\Controller;
+use App\Modules\Core\Helper\Core;
 use App\Modules\Course\Helper\CourseHelper;
 use App\Modules\Course\Model\CourseTeacher;
 use App\Modules\Course\Model\Lesson;
@@ -33,15 +34,18 @@ class CourseController extends Controller
         return view('Course::index', ['courses' => $courses]);
     }
 
+    public function show($id)
+    {
+        $course = $this->course->find($id);
+        if(!isset($course->id)){
+            return view("Core::404");
+        }
+        $lessons = Lesson::where('course_id', $id)->get();
+        return view('Course::course', ['course' => $course, 'lessons' => $lessons]);
+    }
+
     public function courseOverview($id){
         $userid = session('user_id');
-        $per = UserHelper::getAllPermission();
-        if($per['guest']){
-            return redirect('/login');
-        }
-        if($per['student']){
-            return redirect('/course/'.$id);
-        }
         if(!CourseHelper::checkTeacher($id,$userid)){
             return view('Core::404');
         }
@@ -51,7 +55,7 @@ class CourseController extends Controller
 
     }
 
-    public function newCourse(Request $request)
+    public function create(Request $request)
     {
         $data['fullname'] = $request->input('fullname');
         $data['shortname'] = $request->input('shortname');
@@ -64,7 +68,10 @@ class CourseController extends Controller
         $id = $request->input('id');
         $file = $request->file('featurepicture');
         if(isset($file)) {
-            $data['picture'] = $this->uploadFile($request,$id);
+            $fileName = $file->getClientOriginalName();
+            $fileName = $id.'_'.time().'_'.$fileName;
+            $url = Core::upload($file,'/CourseFeatureImage',$fileName);
+            $data['picture'] = $url;
         }else{
             $data['picture'] = '';
         }
@@ -87,7 +94,7 @@ class CourseController extends Controller
 
     }
 
-    public function editCourse($id){
+    public function showEditForm($id){
         $permission = session('permission');
         if(!$permission){
             return redirect('/login');
@@ -112,27 +119,6 @@ class CourseController extends Controller
             }
             return view('Course::form.EditCourse',['course'=> $course]);
         }
-    }
-
-    public function showCourse($id)
-    {
-        $course = $this->course->find($id);
-        if(!isset($course->id)){
-            return view("Core::404");
-        }
-        $lessons = new Lesson();
-        $lessons = $lessons->where('course_id', $id)->get();
-        return view('Course::course', ['course' => $course, 'lessons' => $lessons]);
-    }
-
-    public function uploadFile(Request $request,$id){
-        $file = $request->file('featurepicture');
-        $fileName = $file->getClientOriginalName();
-        $fileName = $id.'_'.time().'_'.$fileName;
-        $destinationPath = public_path('/featureimage');
-        $file->move($destinationPath,$fileName);
-        $url = 'featureimage/'.$fileName;
-        return $url;
     }
 
     public function dashboard_index(){

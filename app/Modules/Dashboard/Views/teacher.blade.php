@@ -36,7 +36,7 @@
                                     <div class="btn-group">
                                         <a class="btn btn-primary"
                                            href="{{route('course::edit',['id'=>$course[0]['id']])}}">Edit</a>
-                                        <a href="{{route('course::courseview',['id'=>$course[0]['id']])}}"
+                                        <a href="{{route('course::show',['id'=>$course[0]['id']])}}"
                                            class="btn btn-danger">View</a>
                                     </div>
                                 </td>

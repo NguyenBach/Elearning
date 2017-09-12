@@ -20,7 +20,7 @@
                 <h2>About The Coures</h2>
                 <p>{{$course->introduction}}</p>
 
-                <a href="#" class="btn btn-primary">Add Lesson</a>
+                <a href="{{route('course::editlesson',['id'=>$course->id])}}" class="btn btn-primary">Add Lesson</a>
                 <table class="table table-striped course_table">
                     <thead>
                     <tr>
@@ -32,7 +32,7 @@
                     <tbody>
                     @foreach($lessons as $lesson)
                         <tr>
-                            <td><a href="{{route('course::lesson',['id'=>$course->id,'lessonid'=>$lesson->id])}}">{{$lesson->title}}</a></td>
+                            <td><a href="{{route('course::lessonOverview',['courseid'=>$course->id,'lessonid'=>$lesson->id])}}">{{$lesson->title}}</a></td>
                             <td>Dr. Steve Palmer</td>
                             <td><div class="btn-group">
                                     <a class="btn btn-primary" href="{{route('course::editlesson',['id'=>$course->id,'lesson'=>$lesson->id])}}">Edit</a>

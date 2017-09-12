@@ -16,7 +16,6 @@ class Lesson extends Model
     protected $table = 'lesson';
 
     public function addLesson($data){
-        $this->id = $data['lessonid'];
         $this->course_id = $data['courseid'];
         $this->title = $data['title'];
         $this->summary = $data['summary'];
@@ -24,7 +23,7 @@ class Lesson extends Model
         $this->setCreatedAt(time());
         $success = $this->save();
         if($success){
-            return $data['lessonid'];
+            return $this->id;
         }else {
             return 0;
         }

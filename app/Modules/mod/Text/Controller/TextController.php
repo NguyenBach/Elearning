@@ -92,7 +92,7 @@ class TextController extends Controller
                 return redirect()->back()->with('message', 'error');
             }
         }
-        return redirect()->route('course::editlesson', ['id' => $data['course_id'], 'lesson' => $data['lesson_id']]);
+        return redirect()->route('course::lessonOverview', ['courseid' => $data['course_id'], 'lessonid' => $data['lesson_id']]);
 
     }
 

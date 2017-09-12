@@ -10,6 +10,8 @@ namespace App\Modules\mod\Video\Controller;
 
 
 use App\Http\Controllers\Controller;
+use App\Modules\Core\Controller\Mod_Controller;
+use App\Modules\Core\Helper\Core;
 use App\Modules\Course\ActivityType;
 use App\Modules\Course\Helper\CourseHelper;
 use App\Modules\mod\Video\Model\Video;
@@ -20,11 +22,11 @@ use App\Modules\Course\Model\LessonModule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-class VideoController extends Controller
+class VideoController extends Mod_Controller
 {
+    protected $modName = 'Video';
 
-
-    public function addForm(Request $request)
+    public function form(Request $request)
     {
         $courseId = $request->input('course_id');
         $lessonId = $request->input('lesson_id');
@@ -54,7 +56,7 @@ class VideoController extends Controller
         return view('Video::form.createForm', ['course' => $course, 'lesson' => $lesson, 'action' => $action, 'activity' => $activity]);
     }
 
-    public function addVideo(Request $request)
+    public function add(Request $request)
     {
         $data = $request->all();
         $action = $data['action'];
@@ -96,7 +98,7 @@ class VideoController extends Controller
             }
 
         }
-        return redirect()->route('course::editlesson', ['id' => $data['course_id'], 'lesson' => $data['lesson_id']]);
+        return redirect()->route('course::lessonOverview', ['id' => $data['course_id'], 'lesson' => $data['lesson_id']]);
 
     }
 
@@ -106,17 +108,9 @@ class VideoController extends Controller
         if (!isset($file)) {
             return '';
         }
-        $fileName = $file->getClientOriginalName();
-        $fileName = $id . '_' . time() . '_' . $fileName;
-        $destinationPath = storage_path('app/public/video');
-        $file->move($destinationPath, $fileName);
-        $url = url('storage/video/' . $fileName);
+        $url = Core::upload($file,'/video');
         return $url;
     }
 
-    private function getType()
-    {
-        $type = ActivityType::where('name', 'Video')->first();
-        return $type->id;
-    }
+
 }

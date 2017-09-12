@@ -9,11 +9,11 @@
                     <div class="singCourse_imgarea">
                         <img src="img/course-1.jpg"/>
                         <div class="mask">
-                            <a href="{{route('course::courseview',['id'=>$course->id])}}" class="course_more">View Course</a>
+                            <a href="{{route('course::show',['id'=>$course->id])}}" class="course_more">View Course</a>
                         </div>
                     </div>
                     <div class="singCourse_content">
-                        <h3 class="singCourse_title"><a href="{{route('course::courseview',['id'=>$course->id])}}">{{$course->fullname}}</a></h3>
+                        <h3 class="singCourse_title"><a href="{{route('course::show',['id'=>$course->id])}}">{{$course->fullname}}</a></h3>
                         <p class="singCourse_price"><span>Number Lessons:</span> {{$course->number_lessons}}</p>
                         <p>{{$course->introduction}}</p>
                     </div>

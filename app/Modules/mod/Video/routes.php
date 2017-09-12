@@ -11,6 +11,6 @@ Route::group([
     'namespace' => 'App\Modules\mod\Video\Controller',
     'middleware' => ['web']
 ],function (){
-    Route::get('/add','VideoController@addForm')->name('addForm');
-    Route::post('/add','VideoController@addVideo')->name('addVideo');
+    Route::get('/add','VideoController@form')->name('addForm');
+    Route::post('/add','VideoController@add')->name('addVideo');
 });

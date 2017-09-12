@@ -1,4 +1,7 @@
 @extends('Core::template.index')
+@section('header')
+    @include('Core::template.header')
+    @stop
 @section('content')
     <section id="login">
         <div class="container">
