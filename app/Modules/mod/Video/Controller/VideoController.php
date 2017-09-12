@@ -67,7 +67,7 @@ class VideoController extends Mod_Controller
                 return redirect()->back()->with('message', 'error');
             }
             $data['mod_id'] = $id;
-            $data['url'] = $this->uploadFile($request, $id);
+            $data['url'] = $this->uploadFile($request, 'video');
             $content = new VideoContent();
             $contentId = $content->createInstance($data);
             if (!$contentId) {
@@ -102,15 +102,7 @@ class VideoController extends Mod_Controller
 
     }
 
-    public function uploadFile(Request $request, $id)
-    {
-        $file = $request->file('video');
-        if (!isset($file)) {
-            return '';
-        }
-        $url = Core::upload($file,'/video');
-        return $url;
-    }
+
 
 
 }

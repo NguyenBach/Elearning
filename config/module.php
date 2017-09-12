@@ -19,6 +19,7 @@ return  [
     'mod'=>[
         'Text',
         'Video',
+        'PDF'
 
     ]
 ];

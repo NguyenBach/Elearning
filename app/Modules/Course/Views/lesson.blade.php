@@ -27,7 +27,7 @@
                                     <?php
                                     $act = \App\Modules\Course\ActivityType::find($activity->type_id);
                                     $instance = \Illuminate\Support\Facades\DB::table($act->table)->where('id',$activity->instance)->first();
-                                    $view = $act->name . '::' . $instance->template;
+//                                    $view = $act->name . '::' . $instance->template;
                                     ?>
                                     @include($view[$key],['activity'=>$activity])
                                 </div>

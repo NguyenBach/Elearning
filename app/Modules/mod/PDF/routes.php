@@ -8,8 +8,8 @@
 Route::group([
    'as' => 'PDF::',
     'prefix' => '/pdf',
-    'namespace' => 'App\Modules\activity\PDF\Controller'
+    'namespace' => 'App\Modules\mod\PDF\Controller'
 ],function (){
-    Route::get('/add','PDFController@addForm')->name('addForm');
-    Route::post('/add','PDFController@addPDF')->name('add');
+    Route::get('/add','PDFController@form')->name('addForm');
+    Route::post('/add','PDFController@add')->name('add');
 });

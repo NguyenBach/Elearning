@@ -22,11 +22,15 @@ class PDF extends Migration{
     {
         Schema::create('pdf', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('course_id');
+            $table->integer('lesson_id');
             $table->string('name');
-            $table->string('intro');
-            $table->string('pdf_link');
+            $table->string('description');
+            $table->string('template');
             $table->timestamps();
         });
+        DB::table('activity_type')->insert(['name'=>'PDF','description'=>'pdf module','active'=>1,'type_template'=>'template1','table'=>'pdf','created_at'=>date('Y-m-d h:m:s',time())]);
+
     }
     /**
      * Reverse the migrations.
@@ -35,6 +39,6 @@ class PDF extends Migration{
      */
     public function down()
     {
-        Schema::drop('video_content');
+        Schema::drop('pdf');
     }
 }

@@ -102,14 +102,4 @@ class TextController extends Controller
         return $type->id;
     }
 
-    private function save($courseId, $lessonId, $title, $content, TextContent $text)
-    {
-        $text->course_id = $courseId;
-        $text->lesson_id = $lessonId;
-        $text->title = $title;
-        $text->content = $content;
-        $text->setCreatedAt(time());
-        $text->save();
-        return $text->id;
-    }
 }
