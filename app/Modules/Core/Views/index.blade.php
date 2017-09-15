@@ -1,7 +1,7 @@
 @extends('Core::template.1column')
-{{--@section('header')--}}
-        {{--@include('Core::template.header')--}}
-{{--@stop--}}
+@section('header')
+        @include('Core::template.header')
+@stop
 @section('slider')
     <section id="slider">
         <div class="row">
