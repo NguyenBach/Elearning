@@ -14,21 +14,12 @@
 <section id="slider">
     @section('slider')@show
 </section>
-<section id="courseArchive">
-    <div class="container">
-        <div class="row">
-            {{--main content--}}
-            <div class="col-lg-8 col-md-8 col-sm-8">
-                @section('content') @show
-            </div>
-            {{--right sidebar--}}
-            <div class="col-lg-4 col-md-4 col-sm-4">
-                @section('sidebar') @show
-            </div>
-        </div>
-    </div>
+<section id="content">
+    @section('content')@show
 </section>
 <footer id="footer">
+    @section('footer')
+    @show
     @include('Core::template.footer')
 </footer>
 <section id="script">

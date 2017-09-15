@@ -1,4 +1,4 @@
-@extends('Core::template.index')
+@extends('Core::template.1column')
 @section('header')
         @include('Core::template.header')
 @stop

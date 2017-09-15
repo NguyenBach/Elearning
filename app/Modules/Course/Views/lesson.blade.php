@@ -1,4 +1,4 @@
-@extends('Core::template.2columns')
+@extends('Core::template.2columns_right')
 @section('content')
     <section id="lesson" style="margin-top: 100px">
         <div class="container">
@@ -45,4 +45,7 @@
 @stop
 @section('sidebar')
     @include('Core::template.sidebar')
+@stop
+@section('header')
+    @include('Core::template.header')
 @stop

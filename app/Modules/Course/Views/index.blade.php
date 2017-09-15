@@ -1,4 +1,4 @@
-@extends('Core::template.2columns')
+@extends('Core::template.2columns_right')
 @section('content')
     <div class="courseArchive_content">
         <div class="row">
@@ -42,4 +42,7 @@
 @stop
 @section('sidebar')
 @include('Core::template.sidebar')
+@stop
+@section('header')
+    @include('Core::template.header')
 @stop

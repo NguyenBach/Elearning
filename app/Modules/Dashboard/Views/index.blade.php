@@ -1,4 +1,4 @@
-@extends('Core::template.index')
+@extends('Core::template.1column')
 @section('css')
     <link href="{{url('dashboard-css/css/bootstrap-theme.css')}}" rel="stylesheet">
     <link href="{{url('dashboard-css/css/elegant-icons-style.css')}}" rel="stylesheet"/>
