@@ -50,7 +50,6 @@ return [
     | your application so that it is used when running Artisan tasks.
     |
     */
-
     'url' => env('APP_URL', 'http://elearning-uet.tk'),
 
     /*
@@ -103,7 +102,7 @@ return [
     |
     */
 
-    'key' => env('APP_KEY'),
+    'key' => env('APP_KEY','base64:vD49R+g6bQoRJoW3GFbJtzN0DQ7btCmZMZBczW68juc='),
 
     'cipher' => 'AES-256-CBC',
 
