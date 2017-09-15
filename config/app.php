@@ -50,8 +50,7 @@ return [
     | your application so that it is used when running Artisan tasks.
     |
     */
-
-    'url' => env('APP_URL', 'http://www.elearning-uet.tk'),
+    'url' => env('APP_URL', 'http://elearning-uet.tk'),
 
     /*
     |--------------------------------------------------------------------------
