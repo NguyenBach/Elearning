@@ -1,4 +1,4 @@
-@extends('Core::template.index')
+@extends('Core::template.1column')
 @section('content')
     <div style="text-align: center">
         <h4>Your account: {{$account['username']}} is registed </h4>
