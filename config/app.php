@@ -51,7 +51,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'http://www.elearning-uet.tk'),
 
     /*
     |--------------------------------------------------------------------------
@@ -103,7 +103,7 @@ return [
     |
     */
 
-    'key' => env('APP_KEY'),
+    'key' => env('APP_KEY','base64:vD49R+g6bQoRJoW3GFbJtzN0DQ7btCmZMZBczW68juc='),
 
     'cipher' => 'AES-256-CBC',
 
