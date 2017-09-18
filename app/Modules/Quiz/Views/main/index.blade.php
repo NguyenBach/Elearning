@@ -1,4 +1,4 @@
-@extends('Core::template.index')
+@extends('Core::template.1column')
 @section('css')
     <link href="{{url('js/DataTables-1.10.12/media/css/jquery.dataTables.css')}}" rel="stylesheet">
 @stop
