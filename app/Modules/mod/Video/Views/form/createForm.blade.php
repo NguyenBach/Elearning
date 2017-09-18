@@ -16,7 +16,7 @@
             $content = new \App\Modules\mod\Video\Model\VideoContent();
         }
         ?>
-        <h5 style="font-weight: bold ">General Setting</h5>
+        <h5 style="font-weight: bold " class="hello">General Setting</h5>
         <div class="form-group">
             <label for="">Name: </label>
             <input class="form-control" type="text" name="name" value="{{$act->name}}"> <br>

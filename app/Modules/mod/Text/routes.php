@@ -10,7 +10,7 @@ Route::group([
    'as' => 'Text::',
     'prefix' => '/text',
     'namespace' => 'App\Modules\mod\Text\Controller',
-    'middleware' => 'web'
+    'middleware' => ['web','permission']
 ],function (){
     Route::get('/add','TextController@add')->name('addForm');
     Route::post('/add','TextController@addText')->name('addtext');

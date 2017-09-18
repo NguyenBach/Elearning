@@ -7,7 +7,8 @@
             <h2>About The Lesson</h2>
             <h4>{{$lesson->title}}</h4>
             <p>{{$lesson->summary}}</p>
-            <a href="{{route('course::editlesson',['id'=>$course->id,'lesson'=>$lesson->id])}}" class="btn btn-primary">Edit Lesson</a>
+            <a href="{{route('course::editlesson',['id'=>$course->id,'lesson'=>$lesson->id])}}" class="btn btn-primary">Edit
+                Lesson</a>
 
             <h5>Activities</h5>
             <button type="button" class="btn btn-info" data-toggle="modal" data-target="#addActivity">Add
@@ -47,8 +48,19 @@
                 @endforeach
                 </tbody>
             </table>
-
-
+            @if($lesson->id > 1)
+                <a class="btn btn-default"
+                   href="{{route('course::lessonOverview',['courseid'=>$course->id,'lessonid'=>$lesson->id-1])}}">Previous</a>
+            @endif
+            <a class="btn btn-default" href="{{route('course::overview',['id'=>$course->id])}}">OK</a>
+            <?php
+            $lessons = \App\Modules\Course\Model\Lesson::where('course_id', $course->id)->get();
+            $max = count($lessons);
+            ?>
+            @if($lesson->id < $max)
+                <a class="btn btn-default"
+                   href="{{route('course::lessonOverview',['courseid'=>$course->id,'lessonid'=>$lesson->id+1])}}">Next</a>
+            @endif
         </div>
     </div>
     <div class="modal fade" id="addActivity" role="dialog">

@@ -9,7 +9,7 @@ Route::group([
    'as' => 'Video::',
     'prefix' => '/video',
     'namespace' => 'App\Modules\mod\Video\Controller',
-    'middleware' => ['web']
+    'middleware' => ['web','permission']
 ],function (){
     Route::get('/add','VideoController@form')->name('addForm');
     Route::post('/add','VideoController@add')->name('addVideo');

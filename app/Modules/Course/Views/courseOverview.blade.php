@@ -44,7 +44,7 @@
                     </tbody>
                 </table>
             </div>
-
+            <a href="{{route('CourseDashboard::index')}}" class="btn btn-default">OK</a>
         </div>
     </div>
 @stop

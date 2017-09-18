@@ -19,7 +19,7 @@ Route::group([
 Route::group([
     'namespace' => 'App\Modules\User\Controller',
 ],function (){
-    Route::get('/login','LoginController@loginView')->name('thangdeptrai');
+    Route::get('/login','LoginController@loginView')->name('login');
     Route::post('/login','UserController@login');
     Route::get('/register',function (){
         return view('User::register');

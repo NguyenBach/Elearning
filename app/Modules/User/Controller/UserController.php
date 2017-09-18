@@ -72,8 +72,10 @@ class UserController extends Controller
     public function login(LoginRequest $request){
         $username = $request->input('username');
         $password = $request->input('password');
+        $re = $request->input('redirect');
+        if(!isset($re)) $re = '/';
         if(UserHelper::isLogined()){
-            return redirect('/');
+            return redirect($re);
         }
         $user = $this->account->where('username',$username)->first();
         if(count($user) == 0){
@@ -87,7 +89,7 @@ class UserController extends Controller
                 $p[] = $per->permission;
             }
             session(['permission'=>$p,'user_id'=>$user->user_id]);
-            return redirect('/');
+            return redirect($re);
         }else{
             $errors = new MessageBag(['errorlogin'=>'Username or password is incorrect']);
             return redirect()->back()->withInput(['username'=>$username])->withErrors($errors);

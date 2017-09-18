@@ -19,7 +19,8 @@
                     <li><a href="{{route('course::index')}}">Course</a></li>
                     <li></li>
                     @if(!session('permission') )
-                        <li><a href="{{route('thangdeptrai')}}">Login</a></li>
+
+                        <li><a href="{{route('login',['redirect'=>$_SERVER['REQUEST_URI']])}}">Login</a></li>
                     @else
                         <li><a href="{{route('dashboard::index')}}">Admin</a></li>
                         <li><a href="{{route('logout')}}">Logout</a></li>

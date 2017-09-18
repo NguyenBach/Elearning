@@ -26,36 +26,6 @@ class VideoController extends Mod_Controller
 {
     protected $modName = 'Video';
 
-    public function form(Request $request)
-    {
-        $courseId = $request->input('course_id');
-        $lessonId = $request->input('lesson_id');
-        $activityId = $request->input('activity_id');
-        if (isset($activityId)) {
-            $action = 'edit';
-            if (CourseHelper::checkActivityExist($courseId, $lessonId, $activityId)) {
-                $activity = CourseHelper::checkActivityExist($courseId, $lessonId, $activityId);
-            } else {
-                return redirect()->back()->with('message', 'Error');
-            }
-        } else {
-            $action = 'new';
-            $activity = new LessonModule();
-        }
-        if (CourseHelper::checkCourseExist($courseId)) {
-            $course = CourseHelper::checkCourseExist($courseId);
-        } else {
-            return redirect()->back()->with('message', 'Error');
-        }
-        if (CourseHelper::checkLessonExist($courseId, $lessonId)) {
-            $lesson = CourseHelper::checkLessonExist($courseId, $lessonId);
-        } else {
-            return redirect()->back()->with('message', 'Error');
-        }
-
-        return view('Video::form.createForm', ['course' => $course, 'lesson' => $lesson, 'action' => $action, 'activity' => $activity]);
-    }
-
     public function add(Request $request)
     {
         $data = $request->all();
