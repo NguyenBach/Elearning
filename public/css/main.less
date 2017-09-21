@@ -37,3 +37,54 @@ section#quiz {
     width:100%;
   }
 }
+
+#sidebar {
+  margin-top: 50px;
+  a:hover, a:focus {
+    text-decoration: none;
+  }
+  ul.sidebar-menu {
+    li {
+      margin-bottom: 3px;
+      a {
+        background-color: #313b3d;
+        padding:10px;
+        display: block;
+        color: #e1e1e1;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        &:hover {
+          color: #cca300;
+        }
+      }
+      &:hover {
+        ul.sub {
+          display: block;
+        }
+      }
+    }
+    ul.sub {
+      display: none;
+      margin-top: 5px;
+      padding-left: 10px;
+    }
+  }
+}
+
+.t-btn-group {
+  a.btn {
+    display: block;
+    margin-bottom: 5px;
+  }
+}
+
+
+#them-course {
+  float: right;
+  font-size: 20px;
+  -webkit-border-radius:50%;
+  -moz-border-radius:50%;
+  border-radius:50%;
+}
+

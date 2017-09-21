@@ -1,6 +1,6 @@
 @extends('Dashboard::index')
 @section('mainContent')
-    <div class="container">
+
         <h2>Lesson Overview</h2>
 
         <div class="single_course_content">
@@ -14,6 +14,7 @@
             <button type="button" class="btn btn-info" data-toggle="modal" data-target="#addActivity">Add
                 Activity
             </button>
+
             <table class="table table-striped course_table">
                 <thead>
                 <tr>
@@ -35,12 +36,18 @@
                         <td>{{$act->description}}</td>
                         <td>{{$type->name}}</td>
                         <td>
-                            <div class="btn-group">
+                            <div class="t-btn-group">
                                 <?php $route = $type->name . "::addForm"; ?>
-                                <a href="{{route($route,['course_id'=>$course,'lesson_id'=>$lesson,'activity_id'=>$activity])}}"
+                                <a href="{{route($route,['course_id'=>$course->id,'lesson_id'=>$lesson->id,'activity_id'=>$activity])}}"
                                    class="btn btn-primary">Edit</a>
                                 <a href="#" class="btn btn-info">View</a>
-                                <a href="#" class="btn btn-danger delete-activity" id="{{$activity->id}}">Delete</a>
+                                <form action="{{route('course::deleteactivity')}}" method="post">
+                                    <input type="hidden" name="course_id" value="{{$course->id}}">
+                                    <input type="hidden" name="lesson_id" value="{{$lesson->id}}">
+                                    <input type="hidden" name="activity_id" value="{{$activity->id}}">
+                                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                    <a href="#" class="btn btn-danger delete-activity" id="{{$activity->id}}">Delete</a>
+                                </form>
                             </div>
 
                         </td>
@@ -62,7 +69,7 @@
                    href="{{route('course::lessonOverview',['courseid'=>$course->id,'lessonid'=>$lesson->id+1])}}">Next</a>
             @endif
         </div>
-    </div>
+
     <div class="modal fade" id="addActivity" role="dialog">
         <div class="modal-dialog">
 
@@ -76,4 +83,14 @@
 
         </div>
     </div>
+@stop
+@section('script')
+    <script>
+        $(document).ready(function () {
+            $('.delete-activity').click(function () {
+                alert('Are you sure?');
+                $(this).parent().submit();
+            })
+        })
+    </script>
 @stop

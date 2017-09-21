@@ -24,7 +24,10 @@ class LessonModule extends Model
             return 0;
         }
         $type = ActivityType::find($activity->type_id);
-        DB::table($type->activity_table)->where('id', $activity->instance)->delete();
+        $instance = DB::table($type->table)->where('id', $activity->instance)->delete();
+        if(!$instance){
+            return $instance;
+        }
         $success = $activity->delete();
         return $success;
     }

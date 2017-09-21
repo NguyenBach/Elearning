@@ -1,15 +1,9 @@
 @extends('Core::template.2columns_left')
-@section('css')
-    {{--<link href="{{url('dashboard-css/css/bootstrap-theme.css')}}" rel="stylesheet">--}}
-    {{--<link href="{{url('dashboard-css/css/elegant-icons-style.css')}}" rel="stylesheet"/>--}}
-    {{--<link href="{{url('dashboard-css/css/style.css')}}" rel="stylesheet">--}}
-    {{--<link href="{{url('dashboard-css/css/style-responsive.css')}}" rel="stylesheet"/>--}}
-@stop
 @section('header')
     @include('Core::template.header')
 @stop
 @section('sidebar')
-    <div>
+    <div id="sidebar">
         <!-- sidebar menu start-->
         <ul class="sidebar-menu">
             <li class="">
@@ -33,7 +27,7 @@
             </li>
 
             <li class="sub-menu">
-                <a href="javascript:;" class="">
+                <a class="">
                     <i class="icon_documents"></i>
                     <span>Quiz</span>
                     <span class="menu-arrow arrow_carrot-right"></span>
@@ -45,7 +39,7 @@
             </li>
 
             <li class="sub-menu">
-                <a href="javascript:;" class="">
+                <a class="">
                     <i class="icon_documents"></i>
                     <span>Question Banks</span>
                     <span class="menu-arrow arrow_carrot-right"></span>

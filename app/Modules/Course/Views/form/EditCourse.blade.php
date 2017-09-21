@@ -1,6 +1,6 @@
 @extends('Dashboard::index')
 @section('mainContent')
-    <div class="container">
+
         <form method="post" enctype="multipart/form-data" action="">
             <input type="hidden" name="id" value="{{$course->id}}">
             <input type="hidden" name="_token" value="{{csrf_token()}}">
@@ -55,5 +55,5 @@
             <button type="submit" class="btn btn-success">OK</button>
             <button type="button" class="btn btn-danger">Cancel</button>
         </form>
-    </div>
+
 @stop

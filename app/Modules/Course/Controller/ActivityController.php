@@ -29,7 +29,7 @@ class ActivityController extends Controller
 
     public function getAllActivityType()
     {
-        $acts = $this->activity->where('active',1)->get();
+        $acts = $this->activity->where('active', 1)->get();
         $a = [];
         foreach ($acts as $act) {
             $b = [
@@ -47,55 +47,58 @@ class ActivityController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function createActivity(Request $request){
+    public function createActivity(Request $request)
+    {
         $act = $request->input('activity');
         $courseId = $request->input('course_id');
         $lessonId = $request->input('lesson_id');
         $act = ActivityType::find($act);
-        if(!isset($act->id)){
-            return redirect()->back()->with('message','Error');
+        if (!isset($act->id)) {
+            return redirect()->back()->with('message', 'Error');
         }
-        if(CourseHelper::checkCourseExist($courseId)){
+        if (CourseHelper::checkCourseExist($courseId)) {
             $course = CourseHelper::checkCourseExist($courseId);
-        }else{
-            return redirect()->back()->with('message','Error');
+        } else {
+            return redirect()->back()->with('message', 'Error');
         }
-        if(CourseHelper::checkLessonExist($courseId,$lessonId)){
-            $lesson = CourseHelper::checkLessonExist($courseId,$lessonId);
-        }else{
-            return redirect()->back()->with('message','Error');
+        if (CourseHelper::checkLessonExist($courseId, $lessonId)) {
+            $lesson = CourseHelper::checkLessonExist($courseId, $lessonId);
+        } else {
+            return redirect()->back()->with('message', 'Error');
         }
         $route = $act->name . '::addForm';
-        return redirect()->route($route,['course_id'=>$course->id,'lesson_id'=>$lesson->id]);
+        return redirect()->route($route, ['course_id' => $course->id, 'lesson_id' => $lesson->id]);
     }
 
-    public function deleteActivity(Request $request){
+    public function deleteActivity(Request $request)
+    {
         $courseId = $request->input('course_id');
         $lessonId = $request->input('lesson_id');
         $activityId = $request->input('activity_id');
         $permission = UserHelper::getAllPermission();
-        if($permission['teacher'] == 0){
+        if ($permission['teacher'] == 0) {
             return redirect('/');
         }
         $course = Course::find($courseId);
-        if(!isset($course->id)){
-            return response()->json(['success'=>0]);
+        if (!isset($course->id)) {
+            return redirect()->back()->with('message', 'error');
         }
-        $lesson = Lesson::where('course_id',$courseId)->where('id',$lessonId)->first();
-        if(!isset($lesson->id)){
-            return response()->json(['success'=>0]);
+        $lesson = Lesson::where('course_id', $courseId)->where('id', $lessonId)->first();
+        if (!isset($lesson->id)) {
+            return redirect()->back()->with('message', 'error');
         }
-        $activity = LessonModule::where('course_id',$courseId)->where('lesson_id',$lessonId)->where('id',$activityId)->first();
-        if(!isset($activity->id)){
-            return response()->json(['success'=>0]);
+        $activity = LessonModule::where('course_id', $courseId)->where('lesson_id', $lessonId)->where('id', $activityId)->first();
+        if (!isset($activity->id)) {
+            return redirect()->back()->with('message', 'error');
         }
         $ls = new LessonModule();
         $success = $ls->deleteActivity($activityId);
-        return response()->json(['success'=>$success]);
+        return redirect()->back()->with('message', 'success');
     }
 
-    public function dashboard_index(){
+    public function dashboard_index()
+    {
         $acts = ActivityType::all();
-        return view('Course::dashboard.activity',['activities' => $acts]);
+        return view('Course::dashboard.activity', ['activities' => $acts]);
     }
 }
